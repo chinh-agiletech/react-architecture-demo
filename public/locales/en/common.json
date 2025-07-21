@@ -1,0 +1,19 @@
+{
+    "welcome": "Welcome to X Hotel",
+    "account": "Account",
+    "xMember": "X Member",
+    "longStay": "Long Term rent",
+    "aboutXHotel": "About X Hotel",
+    "language": "Language",
+    "vietnamese": "Tiếng Việt",
+    "english": "English",
+    "selectLocation": "Select location",
+    "selectBrand": "Select brand",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "guestsAndRooms": "Guests & Rooms",
+    "adults": "Adults",
+    "children": "Children",
+    "searchRooms": "Search rooms",
+    "allBrands": "All brands"
+}
