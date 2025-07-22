@@ -1,3 +1,9 @@
+## 🚀 Demo
+
+Link demo online: [https://react-architecture-demo.vercel.app](https://react-architecture-demo.vercel.app)
+
+[![Deploy to Vercel](https://vercelbadge.vercel.app/api/nguyen-chinhs-projects/react-architecture-demo)](https://react-architecture-demo.vercel.app)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
