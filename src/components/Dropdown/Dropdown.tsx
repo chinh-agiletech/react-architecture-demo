@@ -17,7 +17,7 @@ interface DropdownProps {
 
 const Dropdown = ({ options, selectedValue = "", onSelect, hideIcon = false }: DropdownProps) => {
   const [open, setOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
   const { t } = useTranslation('common');
 
   // Find the selected option for display
@@ -26,7 +26,7 @@ const Dropdown = ({ options, selectedValue = "", onSelect, hideIcon = false }: D
   // Đóng khi click ra ngoài
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !(dropdownRef.current as any).contains(event.target)) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setOpen(false);
       }
     };

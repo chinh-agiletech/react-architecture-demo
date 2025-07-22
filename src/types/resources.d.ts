@@ -1,5 +1,4 @@
 import 'i18next';
-import { translations } from '../lib/translations';
 
 // Type definitions for i18next to know the structure of our translation resources
 declare module 'i18next' {

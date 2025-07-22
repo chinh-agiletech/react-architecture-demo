@@ -5,7 +5,7 @@ import { useState, useCallback } from 'react';
  * @param initialValues Initial form values
  * @returns Object containing form values, handleChange function, reset function, and setValues function
  */
-function useForm<T extends Record<string, any>>(initialValues: T) {
+function useForm<T extends Record<string, unknown>>(initialValues: T) {
   const [values, setValues] = useState<T>(initialValues);
 
   const handleChange = useCallback((

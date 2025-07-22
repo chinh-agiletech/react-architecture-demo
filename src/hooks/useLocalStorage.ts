@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 /**
  * Hook for using localStorage with automatic JSON parsing/stringifying

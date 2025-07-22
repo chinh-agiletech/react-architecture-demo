@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import SelectComponent from '../SelectCustom/SelectCustom';
 import Flag from '../Flag/Flag';
-import { getCurrentLanguage } from '../../lib/languageUtils';
+import Image from 'next/image';
 
 function Header()
 {
@@ -20,7 +20,7 @@ function Header()
             setCurrentLanguage(storedLang);
             i18n.changeLanguage(storedLang);
         }
-    }, []);
+    }, [currentLanguage, i18n]);
 
     const handleLanguageChange = (value: string | number) => {
         const locale = value as string;

@@ -145,7 +145,7 @@ export const LinkedDatePicker: React.FC<LinkedDatePickerProps> = ({
     const days = differenceInDays(selectedEndDate, selectedStartDate);
     setNightCount(days > 0 ? days : 0);
     onChange(selectedStartDate, selectedEndDate);
-  }, [selectedStartDate, selectedEndDate]);
+  }, [selectedStartDate, selectedEndDate, onChange]);
 
   const handleSelectStart = (date: Date) => {
     setSelectedStartDate(date);

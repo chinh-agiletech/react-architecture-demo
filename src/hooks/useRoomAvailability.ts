@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { Room } from '../features/room/type';
 
 interface AvailabilityOptions {

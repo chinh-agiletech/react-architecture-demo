@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import Dropdown from '../Dropdown/Dropdown';
-import { SingleDatePicker, LinkedDatePicker } from '../CustomCalendar/CustomCalendar';
+import { SingleDatePicker } from '../CustomCalendar/CustomCalendar';
 import GuestSelector from '../GuestSelector/GuestSelector';
 
 const Filter = () => {
@@ -31,10 +31,10 @@ const Filter = () => {
     { value: 'xluxury', label: 'X Luxury' },
   ];
 
-  // Format date for display
-  const formatDate = (date: Date) => {
+  // Format date function available for future use
+  /* const formatDate = (date: Date) => {
     return `${t(`day${date.getDay()}`)} ${date.getDate()} ${t(`month${date.getMonth()}`)} ${date.getFullYear()}`;
-  };
+  }; */
 
   return (
     <div className="w-full bg-white py-4">

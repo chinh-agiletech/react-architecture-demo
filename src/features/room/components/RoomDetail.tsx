@@ -1,8 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { RoomDetailProps, Room } from '../type';
+import { Room } from '../type';
 import { rooms } from '../data/room';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 
 const RoomDetail = ({ id }: { id: string }) => {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -12,27 +13,21 @@ const RoomDetail = ({ id }: { id: string }) => {
   const [error, setError] = useState<string | null>(null);
   const { t } = useTranslation('common');
 
-  // Fetch room data from API
   useEffect(() => {
-    const fetchRoom = async () => {
-      try {
-        const response = await fetch(`/api/rooms/${id}`);
-        
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        setRoom(data);
-        setLoading(false);
-      } catch (err) {
-        console.error('Failed to fetch room data:', err);
-        setError(`Error fetching room data: ${err instanceof Error ? err.message : 'Unknown error'}`);
-        setLoading(false);
+    try {
+      const foundRoom = rooms.find(room => room.id === id);
+      
+      if (!foundRoom) {
+        throw new Error('Room not found');
       }
-    };
-    
-    fetchRoom();
+      
+      setRoom(foundRoom);
+      setLoading(false);
+    } catch (err) {
+      console.error('Failed to get room data:', err);
+      setError(`Error getting room data: ${err instanceof Error ? err.message : 'Unknown error'}`);
+      setLoading(false);
+    }
   }, [id]);
   
   // Sample room images - will be replaced with real data once loaded
@@ -121,11 +116,12 @@ const RoomDetail = ({ id }: { id: string }) => {
             <div className="text-red-500">{error}</div>
           ) : (
             <>
-              <div className="mb-4">
-                <img 
+              <div className="mb-4 relative w-full h-96">
+                <Image 
                   src={room?.image || images[selectedImage]} 
                   alt={`${room?.name} - Image ${selectedImage + 1}`}
-                  className="w-full h-96 object-cover rounded-lg"
+                  fill
+                  className="object-cover rounded-lg"
                 />
               </div>
               <div className="grid grid-cols-4 gap-2">
@@ -136,11 +132,14 @@ const RoomDetail = ({ id }: { id: string }) => {
                     className={`cursor-pointer border-2 rounded-md overflow-hidden ${selectedImage === index ? 'border-green-500' : 'border-transparent'}`}
                     onClick={() => setSelectedImage(index)}
                   >
-                    <img 
-                      src={index === 0 ? (room?.image || img) : img} 
-                      alt={`Thumbnail ${index + 1}`}
-                      className="w-full h-20 object-cover"
-                    />
+                    <div className="relative w-full h-20">
+                      <Image 
+                        src={index === 0 ? (room?.image || img) : img} 
+                        alt={`Thumbnail ${index + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
                 ))}
               </div>

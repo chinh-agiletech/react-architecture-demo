@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
+import i18n from 'i18next';
 import initI18n from './i18n';
 
 interface I18nProviderProps {
@@ -9,7 +10,7 @@ interface I18nProviderProps {
 }
 
 const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
-  const [i18nInstance, setI18nInstance] = useState<any>(null);
+  const [i18nInstance, setI18nInstance] = useState<typeof i18n | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

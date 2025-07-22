@@ -1,3 +1,5 @@
+"use client";
+
 import SelectComponent from '../../../components/SelectCustom/SelectCustom';
 import RoomCard from './RoomCard';
 import { useState } from 'react';
@@ -9,7 +11,7 @@ const RoomList = () => {
   const { t } = useTranslation();
     
   // Price filter states
-  const [priceFrom, setPriceFrom] = useState(0);
+  const [priceFrom] = useState(0);
   const [priceTo, setPriceTo] = useState(500000);
   const [selectedFixedPrice, setSelectedFixedPrice] = useState(500000);
   const [selectedLocation, setSelectedLocation] = useState('all');
