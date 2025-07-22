@@ -85,11 +85,17 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({ onChange }) =>
 export const SingleDatePicker: React.FC<SingleDatePickerProps> = ({ date = new Date(), onChange, label }) => {
   const [open, setOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date>(date);
+  const { t } = useTranslation('common');
 
   const handleSelect = (date: Date) => {
     setSelectedDate(date);
     onChange(date);
     setOpen(false);
+  };
+  
+  // Format date in a language-independent way to save space
+  const formatDisplayDate = (date: Date) => {
+    return `${t(`day${date.getDay()}`).substring(0, 3)} ${date.getDate()} ${t(`month${date.getMonth()}`).substring(0, 3)} ${date.getFullYear()}`;
   };
 
   return (
@@ -98,9 +104,9 @@ export const SingleDatePicker: React.FC<SingleDatePickerProps> = ({ date = new D
         className="cursor-pointer"
         onClick={() => setOpen(!open)}
       >
-        <p className="text-sm text-[#6d6d6d]">{label}</p>
-        <p className="font-semibold text-[#405f2d]">
-          {format(selectedDate, "EEE dd MMM yyyy", { locale: vi })}
+        <p className="text-xs text-[#6d6d6d] truncate">{label}</p>
+        <p className="font-semibold text-[#405f2d] text-sm truncate whitespace-nowrap">
+          {formatDisplayDate(selectedDate)}
         </p>
       </div>
 

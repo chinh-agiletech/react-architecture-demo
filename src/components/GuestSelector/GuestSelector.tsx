@@ -42,13 +42,16 @@ const GuestSelector: React.FC<GuestSelectorProps> = ({
   return (
     <div className="relative" ref={wrapperRef}>
       <div
-        className="cursor-pointer flex items-center gap-2 px-6"
+        className="cursor-pointer flex items-center gap-2"
         onClick={() => setOpen(!open)}
       >
-        <FaBed className="text-gray-600 w-4 h-4" />
-        <p className="font-semibold">
-          {t('guestSummary', { adults, children })}
-        </p>
+        <FaBed className="text-gray-600 w-4 h-4 flex-shrink-0" />
+        <div>
+          <p className="text-xs text-[#6d6d6d]">{t('guests')}</p>
+          <p className="font-semibold text-[#405f2d] text-sm truncate whitespace-nowrap">
+            {adults} {t('adults')} • {children} {t('children')}
+          </p>
+        </div>
       </div>
 
       {open && (

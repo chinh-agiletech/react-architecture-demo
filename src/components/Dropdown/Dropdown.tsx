@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 
 type OptionType = {
   value: string;
@@ -17,6 +18,7 @@ interface DropdownProps {
 const Dropdown = ({ options, selectedValue = "", onSelect, hideIcon = false }: DropdownProps) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const { t } = useTranslation('common');
 
   // Find the selected option for display
   const selectedOption = options.find((option) => option.value === selectedValue) || options[options.length - 1];
@@ -41,14 +43,21 @@ const Dropdown = ({ options, selectedValue = "", onSelect, hideIcon = false }: D
     <div className="relative inline-block text-left" ref={dropdownRef}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-2 py-2 rounded-full hover:shadow"
+        className="flex items-center gap-2 py-2 rounded-full hover:shadow"
       >
         {!hideIcon && (
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 20s6-5.686 6-10A6 6 0 0 0 4 10c0 4.314 6 10 6 10zm0-13a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
           </svg>
         )}
-        <span className="font-semibold mt-1">{selectedOption.label}</span>
+        <div>
+          <p className="text-xs text-[#6d6d6d] truncate">
+            {hideIcon ? t('brand') : t('location')}
+          </p>
+          <p className="font-semibold text-[#405f2d] text-sm truncate whitespace-nowrap">
+            {selectedOption.label}
+          </p>
+        </div>
       </button>
 
       {open && (

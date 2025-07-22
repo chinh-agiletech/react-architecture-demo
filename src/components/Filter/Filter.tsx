@@ -39,9 +39,9 @@ const Filter = () => {
   return (
     <div className="w-full bg-white py-4">
       <div className="max-w-[85rem] mx-auto">
-        <div className="flex items-center justify-between px-4 py-2 border border-gray-200 rounded-lg bg-white shadow-xl">
+        <div className="flex justify-between items-center flex-nowrap px-4 py-2 border border-gray-200 rounded-lg bg-white shadow-xl">
           {/* Location Selection */}
-          <div className="flex items-center border-r border-gray-300 px-6">
+          <div className="flex items-center border-r border-gray-300 px-4 min-w-[120px]">
           <Dropdown 
             options={locationOptions}
             selectedValue={selectedLocation}
@@ -50,9 +50,9 @@ const Filter = () => {
           </div>
 
           {/* Brand Selection */}
-          <div className="flex items-center border-r border-gray-300 px-6">
-            <div className="mr-2">
-              <Image src="/logo/branch-logo-black.svg" alt="Branch logo" width={24} height={24} />
+          <div className="flex items-center border-r border-gray-300 px-4 min-w-[120px]">
+            <div className="mr-2 flex-shrink-0">
+              <Image src="/logo/branch-logo-black.svg" alt="Branch logo" width={20} height={20} />
             </div>
             <Dropdown 
               options={brandOptions}
@@ -63,9 +63,9 @@ const Filter = () => {
           </div>
 
           {/* Check-in Date */}
-          <div className="flex items-center border-r border-gray-300 px-6">
-            <div className="mr-2">
-              <Image src="/calendar-249.png" alt="Calendar icon" width={24} height={24} />
+          <div className="flex items-center border-r border-gray-300 px-4 min-w-[170px]">
+            <div className="mr-2 flex-shrink-0">
+              <Image src="/calendar-249.png" alt="Calendar icon" width={20} height={20} />
             </div>
             <SingleDatePicker
               date={checkInDate}
@@ -75,9 +75,9 @@ const Filter = () => {
           </div>
           
           {/* Check-out Date */}
-          <div className="flex items-center border-r border-gray-300 px-6">
-            <div className="mr-2">
-              <Image src="/calendar-249.png" alt="Calendar icon" width={24} height={24} />
+          <div className="flex items-center border-r border-gray-300 px-4 min-w-[170px]">
+            <div className="mr-2 flex-shrink-0">
+              <Image src="/calendar-249.png" alt="Calendar icon" width={20} height={20} />
             </div>
             <SingleDatePicker
               date={checkOutDate}
@@ -87,7 +87,7 @@ const Filter = () => {
           </div>
 
           {/* Guests */}
-          <div className="flex items-center px-6">
+          <div className="flex items-center px-4 min-w-[150px]">
             <GuestSelector
               adults={adults}
               children={children}
@@ -100,7 +100,7 @@ const Filter = () => {
 
           {/* Search Button */}
           <button 
-            className="bg-[#4c7038] hover:bg-[#405f2d] text-white py-1 px-6 rounded-[50px] font-medium transition-colors h-[40px]"
+            className="bg-[#4c7038] hover:bg-[#405f2d] text-white py-1 px-6 rounded-[50px] font-medium transition-colors h-[36px] flex-shrink-0 ml-2"
           >
             {t('searchRooms')}
           </button>
