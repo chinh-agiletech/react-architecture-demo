@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { RoomCardProps } from '../type';
+import { useTranslation } from 'react-i18next';
 
 const RoomCard: React.FC<RoomCardProps> = ({
   id,
@@ -12,6 +13,9 @@ const RoomCard: React.FC<RoomCardProps> = ({
   amenities,
   detailUrl = `/product/${id}`,
 }) => {
+  // Initialize i18n
+  const { t } = useTranslation();
+  
   return (
     <div className="border border-none rounded-lg overflow-hidden shadow-md flex flex-col md:flex-row">
       {/* Room Image */}
@@ -58,19 +62,19 @@ const RoomCard: React.FC<RoomCardProps> = ({
           {/* Right column - Price information */}
           <div className="w-full md:w-1/3 mt-4 md:mt-0 flex flex-col items-start md:items-end">
             <div className="md:text-right">
-              <p className="text-sm text-gray-600">ONLY FROM</p>
+              <p className="text-sm text-gray-600 min-w-[80px]">{t('perNight').toUpperCase()}</p>
               <p className="text-2xl font-semibold text-[#759d3f]">
                 {price.toLocaleString()}
               </p>
-              <p className="text-sm">{currency}/Night</p>
-              <p className="text-xs text-gray-500">Taxes and fees included</p>
+              <p className="text-sm">{currency}/{t('perNight')}</p>
+              <p className="text-xs text-gray-500 min-w-[160px]">{t('taxesIncluded')}</p>
             </div>
             
             <div className="mt-4">
               <Link href={detailUrl}>
                 <button className="bg-[#759d3f] hover:bg-green-700 
-                text-white px-6 py-2 rounded-full text-sm transition-colors">
-                  View room
+                text-white px-6 py-2 rounded-full text-sm transition-colors min-w-[100px]">
+                  {t('viewRoom')}
                 </button>
               </Link>
             </div>

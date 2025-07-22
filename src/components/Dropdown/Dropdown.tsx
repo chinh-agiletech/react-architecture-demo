@@ -11,9 +11,10 @@ interface DropdownProps {
   options: OptionType[];
   selectedValue?: string;
   onSelect: (value: string) => void;
+  hideIcon?: boolean;
 }
 
-const Dropdown = ({ options, selectedValue = "", onSelect }: DropdownProps) => {
+const Dropdown = ({ options, selectedValue = "", onSelect, hideIcon = false }: DropdownProps) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -42,24 +43,26 @@ const Dropdown = ({ options, selectedValue = "", onSelect }: DropdownProps) => {
         onClick={() => setOpen(!open)}
         className="flex items-center gap-2 px-2 py-2 rounded-full hover:shadow"
       >
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M10 20s6-5.686 6-10A6 6 0 0 0 4 10c0 4.314 6 10 6 10zm0-13a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
-        </svg>
+        {!hideIcon && (
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 20s6-5.686 6-10A6 6 0 0 0 4 10c0 4.314 6 10 6 10zm0-13a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
+          </svg>
+        )}
         <span className="font-semibold mt-1">{selectedOption.label}</span>
       </button>
 
       {open && (
         <div className="absolute z-10 mt-2 shadow-lg bg-white ring-1 ring-black/5 p-2 animate-fade-in-up rounded">
-          <div className="flex flex-row space-x-2">
+          <div className="flex flex-row space-x-1">
             {options.map((option) => (
               <button
-                key={option.value}
-                onClick={() => handleOptionSelect(option.value)}
-                className={`px-3 py-1 ${
-                  selectedOption.value === option.value ? "bg-green-100" : "hover:bg-gray-100"
-                } rounded-full text-green-800 font-semibold text-md hover:bg-green-200 transition`}
+          key={option.value}
+          onClick={() => handleOptionSelect(option.value)}
+          className={`px-3 py-1 ${
+            selectedOption.value === option.value ? "bg-green-100" : "hover:bg-gray-100"
+          } rounded-full text-green-800 font-semibold text-sm hover:bg-green-200 transition w-[120px]`}
               >
-                {option.label}
+          {option.label}
               </button>
             ))}
           </div>

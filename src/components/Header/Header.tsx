@@ -24,17 +24,24 @@ function Header()
 
     const handleLanguageChange = (value: string | number) => {
         const locale = value as string;
-        setCurrentLanguage(locale);
-        i18n.changeLanguage(locale);
+        
+        // Lưu ngôn ngữ vào localStorage
+        localStorage.setItem('language', locale);
+        
+        // Tải lại trang ngay lập tức không đợi đổi ngôn ngữ
+        window.location.reload();
+        
+        // Không cần set state và change language vì trang sẽ reload
+        // và useEffect sẽ tự đọc giá trị từ localStorage
     };
 
     return (
-        <header className="w-full bg-white">
+        <header className="w-full bg-white shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 gap-4 h-16">
-                    {/* First column - Language selector and Account link */}
-                    <div className="flex justify-end mt-4 items-center space-x-6">
-                        <div className="flex items-center space-x-3">
+                {/* Top row - Language selector and Account link */}
+                <div className="flex justify-end items-center py-2 border-b border-gray-100">
+                    <div className="flex items-center space-x-4">
+                        <div className="w-[150px] flex items-center space-x-2">
                             <Flag country={currentLanguage === 'vi' ? 'vi' : 'en'} />
                             <SelectComponent
                                 options={[
@@ -46,36 +53,54 @@ function Header()
                                 className="w-32"
                             />
                         </div>
-                        <Link href="/account" className="text-[#405f2d] transition-colors text-md">
+                        <Link href="/account" className="text-[#405f2d] hover:text-[#5a8941] transition-colors text-sm font-medium">
                             {t('account')}
                         </Link>
                     </div>
+                </div>
 
-                    {/* Second column - Logo and Navigation */}
-                    <div className="flex items-center justify-between">
-                        {/* Logo */}
-                            <Link href="/" className="flex items-center space-x-2 w-[200px]">
-                                <img src="/logo/logo_new.webp" alt="X Hotel Logo" width={200} height={200} className="object-contain h-8 w-8" />
-                            </Link>
+                {/* Main navigation row */}
+                <div className="flex items-center justify-between py-4">
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center">
+                        <img 
+                            src="/logo/logo_new.webp" 
+                            alt="X Hotel Logo" 
+                            width={150} 
+                            height={30} 
+                            className="object-contain h-8 sm:h-9 md:h-10 w-auto"
+                        />
+                    </Link>
 
-                        {/* Navigation */}
-                        <div className="flex items-center space-x-6">
-                            <Link href="/member" className="text-[#405f2d] hover:text-gray-900 transition-colors text-sm">
-                                {t('xMember')}
-                            </Link>
-                            <Link href="/long-stay" className="text-[#405f2d] hover:text-gray-900 transition-colors text-sm">
-                                {t('longStay')}
-                            </Link>
-                            <Link href="/about" className="text-[#405f2d] hover:text-gray-900 transition-colors text-sm">
-                                {t('aboutXHotel')}
-                            </Link>
-                            <Link href="/cart" className="text-[#405f2d] hover:text-gray-900 transition-colors">
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0H17M9 19.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm10 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                                </svg>
-                            </Link>
-                        </div>
-                    </div>
+                    {/* Navigation */}
+                    <nav className="flex items-center space-x-8">
+                        <Link 
+                            href="/member" 
+                            className="text-[#405f2d] hover:text-[#5a8941] transition-colors text-sm font-medium hover:underline"
+                        >
+                            {t('xMember')}
+                        </Link>
+                        <Link 
+                            href="/long-stay" 
+                            className="text-[#405f2d] hover:text-[#5a8941] transition-colors text-sm font-medium hover:underline"
+                        >
+                            {t('longStay')}
+                        </Link>
+                        <Link 
+                            href="/about" 
+                            className="text-[#405f2d] hover:text-[#5a8941] transition-colors text-sm font-medium hover:underline"
+                        >
+                            {t('aboutXHotel')}
+                        </Link>
+                        <Link 
+                            href="/cart" 
+                            className="flex items-center justify-center h-10 w-10 rounded-full bg-[#f5f8f3] hover:bg-[#e8f0e3] text-[#405f2d] transition-all"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0H17M9 19.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm10 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                            </svg>
+                        </Link>
+                    </nav>
                 </div>
             </div>
         </header>

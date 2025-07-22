@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import Dropdown from '../Dropdown/Dropdown';
-import { SingleDatePicker } from '../CustomCalendar/CustomCalendar';
+import { SingleDatePicker, LinkedDatePicker } from '../CustomCalendar/CustomCalendar';
 import GuestSelector from '../GuestSelector/GuestSelector';
 
 const Filter = () => {
@@ -13,16 +13,16 @@ const Filter = () => {
   const [checkOutDate, setCheckOutDate] = useState(new Date(new Date().setDate(new Date().getDate() + 1)));
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
-  const [selectedLocation, setSelectedLocation] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState('all');
   const [selectedBrand, setSelectedBrand] = useState('all');
   
   // Mock data for selectors
   const locationOptions = [
-    { value: 'all', label: 'Tỉnh/thành phố'},
+    { value: 'all', label: t('city')},
     { value: 'hanoi', label: 'Hà Nội' },
     { value: 'hcm', label: 'Hồ Chí Minh' },
     { value: 'danang', label: 'Đà Nẵng' },
-    { value: 'thainguyen', label: 'THÁI NGUYÊN' },
+    { value: 'thainguyen', label: 'Thái Nguyên' },
   ];
   
   const brandOptions = [
@@ -51,10 +51,14 @@ const Filter = () => {
 
           {/* Brand Selection */}
           <div className="flex items-center border-r border-gray-300 px-6">
+            <div className="mr-2">
+              <Image src="/logo/branch-logo-black.svg" alt="Branch logo" width={24} height={24} />
+            </div>
             <Dropdown 
               options={brandOptions}
               selectedValue={selectedBrand}
               onSelect={(value) => setSelectedBrand(value)}
+              hideIcon={true}
             />
           </div>
 

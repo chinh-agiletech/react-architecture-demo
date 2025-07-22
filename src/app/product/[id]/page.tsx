@@ -1,5 +1,5 @@
-import ProductDetail from '@/features/room/components/ProductDetail';
+import RoomDetail from '@/features/room/components/RoomDetail';
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  return <ProductDetail id={params.id} />;
+export default function RoomDetailPage({ params }: { params: { id: string } }) {
+  return <RoomDetail id={params.id} />;
 }

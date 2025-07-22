@@ -2,13 +2,15 @@
 import { useState, useEffect } from 'react';
 import { RoomDetailProps, Room } from '../type';
 import { rooms } from '../data/room';
+import { useTranslation } from 'react-i18next';
 
-const ProductDetail = ({ id }: { id: string }) => {
+const RoomDetail = ({ id }: { id: string }) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [guestCount, setGuestCount] = useState(2);
   const [room, setRoom] = useState<Room | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useTranslation('common');
 
   // Fetch room data from API
   useEffect(() => {
@@ -61,7 +63,7 @@ const ProductDetail = ({ id }: { id: string }) => {
           <ol className="inline-flex items-center space-x-1 md:space-x-3">
             <li className="inline-flex items-center">
               <a href="#" className="text-gray-600 hover:text-green-600">
-                Home
+                {t('home')}
               </a>
             </li>
             <li>
@@ -70,7 +72,7 @@ const ProductDetail = ({ id }: { id: string }) => {
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4"/>
                 </svg>
                 <a href="#" className="text-gray-600 hover:text-green-600 ml-1 md:ml-2">
-                  Rooms
+                  {t('rooms')}
                 </a>
               </div>
             </li>
@@ -153,7 +155,7 @@ const ProductDetail = ({ id }: { id: string }) => {
             <div className="flex justify-between items-center mb-4">
               <div>
                 <p className="text-xl font-bold">920.000 VND</p>
-                <p className="text-sm text-gray-500">per night</p>
+                <p className="text-sm text-gray-500">{t('perNight')}</p>
               </div>
               <div className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
@@ -161,7 +163,7 @@ const ProductDetail = ({ id }: { id: string }) => {
                 </svg>
                 <span className="ml-1 text-lg font-bold">4.9</span>
                 <span className="mx-1 text-gray-400">•</span>
-                <span className="text-sm text-gray-500">42 reviews</span>
+                <span className="text-sm text-gray-500">42 {t('reviews')}</span>
               </div>
             </div>
 
@@ -169,11 +171,11 @@ const ProductDetail = ({ id }: { id: string }) => {
             <div className="mb-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Check-in</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">{t('checkIn')}</label>
                   <input type="date" className="w-full border border-gray-300 rounded-md p-2" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Check-out</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">{t('checkOut')}</label>
                   <input type="date" className="w-full border border-gray-300 rounded-md p-2" />
                 </div>
               </div>
@@ -181,7 +183,7 @@ const ProductDetail = ({ id }: { id: string }) => {
 
             {/* Guest Selection */}
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Guests</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">{t('guests')}</label>
               <div className="flex items-center">
                 <button 
                   className="bg-gray-200 px-3 py-1 rounded-l-md" 
@@ -202,17 +204,17 @@ const ProductDetail = ({ id }: { id: string }) => {
             {/* Booking Buttons */}
             <div className="space-y-4">
               <button className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors">
-                Book Now
+                {t('bookNow')}
               </button>
               <button className="w-full border border-green-600 text-green-600 py-3 rounded-lg hover:bg-green-50 transition-colors">
-                Contact Host
+                {t('contactHost')}
               </button>
             </div>
           </div>
           
           {/* Room Features */}
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">Room Features</h2>
+            <h2 className="text-xl font-semibold mb-4">{t('roomFeatures')}</h2>
             <div className="grid grid-cols-2 gap-4">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-2">
@@ -231,7 +233,7 @@ const ProductDetail = ({ id }: { id: string }) => {
 
       {/* Room Description */}
       <div className="mt-10 bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">About this room</h2>
+        <h2 className="text-2xl font-semibold mb-4">{t('aboutRoom')}</h2>
         <div className="prose max-w-none">
           <p>
             XHOME VIP là phòng cao cấp nhất tại XHOME THÁI NGUYÊN, được thiết kế hiện đại với không gian rộng rãi. 
@@ -242,7 +244,7 @@ const ProductDetail = ({ id }: { id: string }) => {
             Phù hợp cho cả gia đình và khách doanh nhân yêu cầu không gian riêng tư, tiện nghi.
           </p>
           
-          <h3 className="text-xl font-semibold mt-6 mb-2">Room highlights</h3>
+          <h3 className="text-xl font-semibold mt-6 mb-2">{t('roomHighlights')}</h3>
           <ul className="list-disc pl-5 space-y-1">
             <li>Diện tích 45m²</li>
             <li>Giường King size</li>
@@ -257,7 +259,7 @@ const ProductDetail = ({ id }: { id: string }) => {
 
       {/* Location Section */}
       <div className="mt-10 bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Location</h2>
+        <h2 className="text-2xl font-semibold mb-4">{t('location')}</h2>
         <div className="aspect-w-16 aspect-h-9 mb-4">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14895.691196501715!2d105.84096516977537!3d21.011149200000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab953357c995%3A0x1babf6bb4f9a20e!2sHanoi%20Opera%20House!5e0!3m2!1sen!2s!4v1637051596221!5m2!1sen!2s" 
@@ -285,14 +287,14 @@ const ProductDetail = ({ id }: { id: string }) => {
       {/* Reviews Section */}
       <div className="mt-10 bg-white p-6 rounded-lg shadow-md">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-semibold">Guest Reviews</h2>
+          <h2 className="text-2xl font-semibold">{t('guestReviews')}</h2>
           <div className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
             <span className="ml-1 text-lg font-bold">4.9</span>
             <span className="mx-1 text-gray-400">•</span>
-            <span className="text-sm text-gray-500">42 reviews</span>
+            <span className="text-sm text-gray-500">42 {t('reviews')}</span>
           </div>
         </div>
 
@@ -329,7 +331,7 @@ const ProductDetail = ({ id }: { id: string }) => {
 
           <div className="text-center mt-4">
             <button className="text-green-600 hover:text-green-800 font-medium">
-              Show all 42 reviews
+              {t('showAllReviews', { count: 42 })}
             </button>
           </div>
         </div>
@@ -337,7 +339,7 @@ const ProductDetail = ({ id }: { id: string }) => {
 
       {/* Related Rooms Section */}
       <div className="mt-10">
-        <h2 className="text-2xl font-semibold mb-6">Similar Rooms</h2>
+        <h2 className="text-2xl font-semibold mb-6">{t('similarRooms')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[1, 2, 3].map((item) => (
             <div key={item} className="border rounded-lg overflow-hidden shadow-md">
@@ -367,4 +369,4 @@ const ProductDetail = ({ id }: { id: string }) => {
   );
 }
 
-export default ProductDetail;
+export default RoomDetail;

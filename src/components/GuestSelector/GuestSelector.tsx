@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { FaBed } from "react-icons/fa";
+import { useTranslation } from 'react-i18next';
 
 interface GuestSelectorProps {
   adults: number;
@@ -16,6 +17,7 @@ const GuestSelector: React.FC<GuestSelectorProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation('common');
 
   // Close when clicking outside
   useEffect(() => {
@@ -45,17 +47,17 @@ const GuestSelector: React.FC<GuestSelectorProps> = ({
       >
         <FaBed className="text-gray-600 w-4 h-4" />
         <p className="font-semibold">
-          {adults} Người lớn • {children} Trẻ em
+          {t('guestSummary', { adults, children })}
         </p>
       </div>
 
       {open && (
         <div className="absolute z-50 mt-2 bg-white shadow-lg rounded-xl p-4 w-72">
-          {/* Người lớn */}
+          {/* Adults */}
           <div className="flex justify-between items-center border-b py-2">
             <div>
-              <p className="font-medium">Người lớn</p>
-              <p className="text-sm text-gray-500">Từ 6 tuổi trở lên</p>
+              <p className="font-medium">{t('adultLabel')}</p>
+              <p className="text-sm text-gray-500">{t('adultDescription')}</p>
             </div>
             <div className="flex items-center gap-2">
               <button
@@ -74,11 +76,11 @@ const GuestSelector: React.FC<GuestSelectorProps> = ({
             </div>
           </div>
 
-          {/* Trẻ em */}
+          {/* Children */}
           <div className="flex justify-between items-center pt-4">
             <div>
-              <p className="font-medium">Trẻ em</p>
-              <p className="text-sm text-gray-500">Dưới 6 tuổi</p>
+              <p className="font-medium">{t('childrenLabel')}</p>
+              <p className="text-sm text-gray-500">{t('childrenDescription')}</p>
             </div>
             <div className="flex items-center gap-2">
               <button
