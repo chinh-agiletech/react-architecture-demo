@@ -9,22 +9,28 @@
 
 .filterContent {
     display: flex;
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
 }
 
 .filterGroup {
     display: flex;
+    width: 90%;
+    justify-content: flex-start;
     align-items: center;
+    gap: 30px;
 }
 
 .filterItem {
     display: flex;
     align-items: center;
     margin-right: 1.5rem;
+}
+
+.filterItem:not(:last-child) {
+    padding-right: 1.5rem;
+    border-right: 1px solid black;
 }
 
 .iconWrapper {
@@ -40,6 +46,9 @@
     display: flex;
     align-items: center;
     margin-right: 1rem;
+    min-width: 300px;
+    padding-right: 1.5rem;
+    border-right: 1px solid black;
 }
 
 .guestSelector {
@@ -51,7 +60,7 @@
 .searchButton {
     background-color: #4c7038;
     color: white;
-    padding: 0.5rem 1.5rem;
+    padding: 0.2rem 0.52rem;
     border-radius: 50px;
     font-weight: 500;
     border: none;
@@ -63,7 +72,7 @@
 }
 
 /* Responsive styles based on images */
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
     .filterContent {
         flex-wrap: wrap;
     }

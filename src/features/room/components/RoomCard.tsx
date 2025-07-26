@@ -64,7 +64,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
             <div className="md:text-right">
               <p className="text-sm text-gray-600 min-w-[80px]">{t('perNight').toUpperCase()}</p>
               <p className="text-2xl font-semibold text-[#759d3f]">
-                {price.toLocaleString()}
+                {price ? price.format : '0 VND'}
               </p>
               <p className="text-sm">{currency}/{t('perNight')}</p>
               <p className="text-xs text-gray-500 min-w-[160px]">{t('taxesIncluded')}</p>

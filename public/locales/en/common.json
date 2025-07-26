@@ -74,6 +74,6 @@
     "filterByLocation": "Filter by location",
     "allLocations": "All Locations",
     "room": "room",
-    "rooms_plural": "rooms"
+    "rooms_plural": "rooms",
+    "apply": "Apply"
 }
-

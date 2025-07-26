@@ -46,26 +46,26 @@ const Dropdown = ({ options, selectedValue = "", onSelect, hideIcon = false }: D
         className="flex justify-center items-center gap-2 py-2 rounded-full cursor-pointer"
       >
         <div>
-          <p className="font-semibold text-[#405f2d] text-sm truncate whitespace-nowrap transition-colors">
+          <p className="font-semibold text-[#405f2d] text-base transition-colors">
             {selectedOption.label}
           </p>
         </div>
       </button>
 
       {open && (
-        <div className="absolute z-10 mt-2 shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black/5 dark:ring-white/10 p-2 animate-fade-in-up rounded transition-colors">
-          <div className="flex flex-row space-x-1">
+        <div className="absolute z-10 mt-2 shadow-lg bg-[#f6f6f6] ring-1 ring-black/5 dark:ring-white/10 p-3 animate-fade-in-up rounded-lg transition-colors min-w-[450px]">
+          <div className="grid grid-cols-3 gap-4">
             {options.map((option) => (
               <button
-          key={option.value}
-          onClick={() => handleOptionSelect(option.value)}
-          className={`px-3 py-1 ${
-            selectedOption.value === option.value 
-              ? "bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100" 
-              : "hover:bg-gray-100 dark:hover:bg-gray-700 text-green-800 dark:text-green-300"
-          } rounded-full font-semibold text-sm hover:bg-green-200 dark:hover:bg-green-700 transition-colors w-[120px]`}
+                key={option.value}
+                onClick={() => handleOptionSelect(option.value)}
+                className={`px-4 py-2 ${
+                  selectedOption.value === option.value
+                    ? "bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100"
+                    : "hover:bg-gray-100 text-green-800 dark:text-green-300"
+                } rounded-full font-semibold text-base hover:bg-green-200 dark:hover:bg-green-700 transition-colors text-center cursor-pointer`}
               >
-          {option.label}
+                {option.label}
               </button>
             ))}
           </div>

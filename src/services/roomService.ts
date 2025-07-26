@@ -28,24 +28,9 @@ export interface PaginatedResponse<T> {
   };
 }
 
-// Extended Room interface with additional properties from API
+// Room interface from the API
 export interface RoomAvailable extends Room {
-  branch_id: number;
-  hotel_id: number;
-  room_type_id: number;
-  brand_type: BrandType;
-  is_available: boolean;
-  hour_pricing_type: HourPricingType;
-  start_time: string;
-  end_time: string;
-  adults: number;
-  children: number;
-  infants: number;
-  original_price: number;
-  discounted_price?: number;
-  discount_percentage?: number;
-  rating?: number;
-  review_count?: number;
+  // Any additional properties specific to availability can be added here
 }
 
 // Parameters for the getAvailableRooms API call
@@ -81,13 +66,18 @@ const API_BASE_URL = 'https://api.xhotel.vn';
  */
 const createSearchParams = (params: Record<string, any>): URLSearchParams => {
   const searchParams = new URLSearchParams();
-  
+
   Object.entries(params).forEach(([key, value]) => {
     if (value !== undefined && value !== null) {
-      searchParams.append(key, String(value));
+      // Convert array values to comma-separated strings if needed
+      if (Array.isArray(value)) {
+        searchParams.append(key, value.join(','));
+      } else {
+        searchParams.append(key, String(value));
+      }
     }
   });
-  
+
   return searchParams;
 };
 
@@ -101,26 +91,29 @@ export const getAvailableRooms = async (
 ): Promise<PaginatedResponse<RoomAvailable>> => {
   try {
     const queryParams = createSearchParams(params);
+    // Ensure URL is properly formatted without extra ampersands
     const url = `${API_BASE_URL}/room/available?${queryParams.toString()}`;
-    
+
     const response = await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
+      // Add cache control to ensure fresh data
+      cache: 'no-cache',
     });
-    
+
     if (!response.ok) {
       throw new Error(`Failed to fetch available rooms: ${response.status}`);
     }
-    
+
     const data = await response.json();
-    
+
     // Validate the response structure
     if (!data || typeof data !== 'object') {
       throw new Error('Invalid API response format');
     }
-    
+
     // Ensure data property exists and is an array
     if (!Array.isArray(data.data)) {
       // If API doesn't return expected format, create a standardized response
@@ -134,7 +127,7 @@ export const getAvailableRooms = async (
         }
       };
     }
-    
+
     // Ensure pagination exists with proper values
     if (!data.pagination || typeof data.pagination !== 'object') {
       data.pagination = {
@@ -144,7 +137,7 @@ export const getAvailableRooms = async (
         total_pages: 1
       };
     }
-    
+
     return data;
   } catch (error) {
     console.error('Error fetching available rooms:', error);
@@ -169,25 +162,25 @@ export const getAvailableRooms = async (
 export const getRoomById = async (id: string | number): Promise<RoomAvailable> => {
   try {
     const url = `${API_BASE_URL}/room/${id}`;
-    
+
     const response = await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    
+
     if (!response.ok) {
       throw new Error(`Failed to fetch room details: ${response.status}`);
     }
-    
+
     const data = await response.json();
-    
+
     // Validate the room data
     if (!data || typeof data !== 'object') {
       throw new Error('Invalid room data received from API');
     }
-    
+
     // If API returns array but we need one room, take the first item
     if (Array.isArray(data)) {
       if (data.length === 0) {
@@ -195,7 +188,7 @@ export const getRoomById = async (id: string | number): Promise<RoomAvailable> =
       }
       return data[0];
     }
-    
+
     return data;
   } catch (error) {
     console.error(`Error fetching room with ID ${id}:`, error);
@@ -219,43 +212,44 @@ export const checkRoomAvailability = async (
       ...params,
       room_id: roomId,
     });
-    
+
     const url = `${API_BASE_URL}/room/check-availability?${queryParams.toString()}`;
-    
+
     const response = await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
+      cache: 'no-cache',
     });
-    
+
     if (!response.ok) {
       throw new Error(`Failed to check room availability: ${response.status}`);
     }
-    
+
     const data = await response.json();
-    
+
     // Validate response structure
     if (!data || typeof data !== 'object') {
       throw new Error('Invalid response format from availability check');
     }
-    
+
     // Create a standardized response format
     const result: {isAvailable: boolean; room?: RoomAvailable} = {
       // Default to false if isAvailable is not explicitly true
       isAvailable: data.isAvailable === true
     };
-    
+
     // Include room data if available
     if (data.room && typeof data.room === 'object') {
       result.room = data.room;
     }
-    
+
     return result;
   } catch (error) {
     console.error(`Error checking availability for room ${roomId}:`, error);
     // Return a safe default instead of throwing
-    return { 
+    return {
       isAvailable: false,
       // No room data on error
     };

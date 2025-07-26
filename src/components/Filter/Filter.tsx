@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import Dropdown from '../Dropdown/Dropdown';
-import { SingleDatePicker } from '../CustomCalendar/CustomCalendar';
+import CustomCalendar from '../CustomCalendar/CustomCalendar';
 import GuestSelector from '../GuestSelector/GuestSelector';
 import styles from './Filter.module.css';
 
@@ -20,7 +20,6 @@ const Filter = () => {
   // Mock data for selectors
   const locationOptions = [
     { value: '', label: "Chọn vị trí"},
-    { value: 'all', label: t('city')},
     { value: 'hanoi', label: 'Hà Nội' },
     { value: 'hcm', label: 'Hồ Chí Minh' },
     { value: 'danang', label: 'Đà Nẵng' },
@@ -65,27 +64,20 @@ const Filter = () => {
 
           {/* Date Selection */}
           <div className={styles.dateSelection}>
-            {/* Check-in Date */}
             <div className={styles.dateItem}>
               <div className={styles.iconWrapper}>
                 <Image src="/calendar-249.png" alt="Calendar icon" width={24} height={24} />
               </div>
-              <SingleDatePicker
-                date={checkInDate}
-                onChange={(date) => setCheckInDate(date)}
-                label={t('checkInDate')}
-              />
-            </div>
-
-            {/* Check-out Date */}
-            <div className={styles.dateItem}>
-              <div className={styles.iconWrapper}>
-                <Image src="/calendar-249.png" alt="Calendar icon" width={24} height={24} />
-              </div>
-              <SingleDatePicker
-                date={checkOutDate}
-                onChange={(date) => setCheckOutDate(date)}
-                label={t('checkOutDate')}
+              <CustomCalendar
+                startDate={checkInDate}
+                endDate={checkOutDate}
+                onChange={(start, end) => {
+                  setCheckInDate(start);
+                  setCheckOutDate(end);
+                }}
+                startLabel={t('checkInDate')}
+                endLabel={t('checkOutDate')}
+                singleCalendar={false} // Sử dụng hai calendar song song với khả năng kéo chọn khoảng thời gian
               />
             </div>
           </div>

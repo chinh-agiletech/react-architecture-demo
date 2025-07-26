@@ -11,7 +11,7 @@ export default function Home() {
         <div className="w-full">
           <Filter />
         </div>
-        <div className="mt-10 w-[80%] mx-auto">
+        <div className="mt-10 max-w-[1240px] mx-auto">
           <RoomList />
         </div>
       </div>
