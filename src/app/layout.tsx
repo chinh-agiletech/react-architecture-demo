@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <I18nProvider>
           <Header />
-          <main className="min-h-screen">
+          <main className="min-h-screen pt-[120px]">
             {children}
           </main>
           <Footer />

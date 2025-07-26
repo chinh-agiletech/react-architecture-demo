@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#454545] text-white py-12 mt-4">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Information */}
           <div className="flex flex-col space-y-4">
             <div className="flex items-center">
@@ -81,45 +81,44 @@ const Footer = () => {
           </div>
 
           {/* Support Links */}
-          <div className="flex flex-col md:flex-row md:space-x-12">
-            <div>
-              <h3 className="text-lg font-bold mb-4 uppercase">{t('footer.support', {default: 'Hỗ trợ'})}</h3>
-              <div className="flex flex-col space-y-3">
-                <Link href="/terms" className="text-sm hover:underline">
-                  {t('footer.terms', {default: 'Chính sách và điều khoản'})}
-                </Link>
-                <Link href="/general-rules" className="text-sm hover:underline">
-                  {t('footer.generalRules', {default: 'Quy định chung'})}
-                </Link>
-                <Link href="/privacy-policy" className="text-sm hover:underline">
-                  {t('footer.privacyPolicy', {default: 'Chính sách bảo mật'})}
-                </Link>
-                <Link href="/booking-policy" className="text-sm hover:underline">
-                  {t('footer.bookingPolicy', {default: 'Chính sách giao và nhận phòng'})}
-                </Link>
-                <Link href="/cancellation-policy" className="text-sm hover:underline">
-                  {t('footer.cancellationPolicy', {default: 'Chính sách đổi, trả phòng và hoàn tiền'})}
-                </Link>
-                <Link href="/faq" className="text-sm hover:underline">
-                  {t('footer.faq', {default: 'FAQ'})}
-                </Link>
-              </div>
+          <div>
+            <h3 className="text-lg font-bold mb-4 uppercase">{t('footer.support', {default: 'Hỗ trợ'})}</h3>
+            <div className="flex flex-col space-y-3">
+              <Link href="/terms" className="text-sm hover:underline">
+                {t('footer.terms', {default: 'Chính sách và điều khoản'})}
+              </Link>
+              <Link href="/general-rules" className="text-sm hover:underline">
+                {t('footer.generalRules', {default: 'Quy định chung'})}
+              </Link>
+              <Link href="/privacy-policy" className="text-sm hover:underline">
+                {t('footer.privacyPolicy', {default: 'Chính sách bảo mật'})}
+              </Link>
+              <Link href="/booking-policy" className="text-sm hover:underline">
+                {t('footer.bookingPolicy', {default: 'Chính sách giao và nhận phòng'})}
+              </Link>
+              <Link href="/cancellation-policy" className="text-sm hover:underline">
+                {t('footer.cancellationPolicy', {default: 'Chính sách đổi, trả phòng và hoàn tiền'})}
+              </Link>
+              <Link href="/faq" className="text-sm hover:underline">
+                {t('footer.faq', {default: 'FAQ'})}
+              </Link>
             </div>
+          </div>
 
-            <div className="mt-8 md:mt-0">
-              <h3 className="text-lg font-bold mb-4 uppercase">{t('footer.contact', {default: 'Liên hệ'})}</h3>
-              <div className="flex flex-col space-y-3">
-                <div className="text-sm">
-                  <h4 className="font-medium">{t('footer.companyFullName', {default: 'CÔNG TY CỔ PHẦN ĐT & QL TÀI SẢN PCLAND'})}</h4>
-                  <p className="mt-2">{t('footer.businessRegistration', {default: 'GPKD số 0107870863, ngày cấp 01-06-2017, nơi cấp SỞ KẾ HOẠCH VÀ ĐẦU TƯ THÀNH PHỐ HÀ NỘI'})}</p>
-                </div>
-                <p className="text-sm">
-                  {t('footer.address', {default: 'Địa chỉ: Xã Tây Phương, Hà Nội'})}
-                </p>
-                <p className="text-sm">
-                  {t('footer.email', {default: 'Email'})}: <a href="mailto:info@xhotel.vn" className="hover:underline">info@xhotel.vn</a>
-                </p>
+          {/* Contact Information */}
+          <div>
+            <h3 className="text-lg font-bold mb-4 uppercase">{t('footer.contact', {default: 'Liên hệ'})}</h3>
+            <div className="flex flex-col space-y-3">
+              <div className="text-sm">
+                <h4 className="font-medium">{t('footer.companyFullName', {default: 'CÔNG TY CỔ PHẦN ĐT & QL TÀI SẢN PCLAND'})}</h4>
+                <p className="mt-2">{t('footer.businessRegistration', {default: 'GPKD số 0107870863, ngày cấp 01-06-2017, nơi cấp SỞ KẾ HOẠCH VÀ ĐẦU TƯ THÀNH PHỐ HÀ NỘI'})}</p>
               </div>
+              <p className="text-sm">
+                {t('footer.address', {default: 'Địa chỉ: Xã Tây Phương, Hà Nội'})}
+              </p>
+              <p className="text-sm">
+                {t('footer.email', {default: 'Email'})}: <a href="mailto:info@xhotel.vn" className="hover:underline">info@xhotel.vn</a>
+              </p>
             </div>
           </div>
         </div>

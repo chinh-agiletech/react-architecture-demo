@@ -29,7 +29,7 @@ function Header()
     };
 
     return (
-        <header className="w-full bg-white shadow-sm">
+        <header className="w-full bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Top row - Language selector and Account link */}
                 <div className="flex justify-end items-center py-2 border-b border-gray-100">
