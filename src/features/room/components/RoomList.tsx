@@ -11,9 +11,9 @@ const RoomList = () => {
   const { t } = useTranslation();
 
   // Price filter states
-  const [priceFrom] = useState(0);
-  const [priceTo, setPriceTo] = useState(500000);
-  const [selectedFixedPrice, setSelectedFixedPrice] = useState(500000);
+  const [priceFrom, setPriceFrom] = useState(0);
+  const [priceTo, setPriceTo] = useState(0);
+  const [selectedPriceRange, setSelectedPriceRange] = useState('under650k'); // ID of the selected price range
   const [selectedLocation, setSelectedLocation] = useState('all');
 
   // API data states
@@ -27,12 +27,11 @@ const RoomList = () => {
     total_pages: 0
   });
 
-  // Price options
+  // Price options with ranges
   const priceOptions = [
-    { value: 500000, label: '500K' },
-    { value: 650000, label: '650K' },
-    { value: 800000, label: '800K' },
-    { value: 950000, label: '950K' },
+    { id: 'under650k', label: '< 650K', from: 0, to: 650000 },
+    { id: '700k-900k', label: '700K - 900K', from: 700000, to: 900000 },
+    { id: 'above900k', label: '> 900K', from: 900000, to: 10000000 },
   ];
 
   const locationOptions = [
@@ -42,19 +41,19 @@ const RoomList = () => {
     { value: 'danang', label: 'Đà Nẵng', count: 3, coords: { lat: 16.0544, lng: 108.2022 } },
   ];
 
-  const handlePriceRangeChange = (price: number) => {
-    setPriceTo(price);
-    console.log('Price range:', priceFrom, 'to', price);
-  };
+  const handleFixedPriceRangeChange = (rangeId: string) => {
+    setSelectedPriceRange(rangeId);
 
-  const handleFixedPriceChange = (price: number) => {
-    setSelectedFixedPrice(price);
-    console.log('Fixed price:', price);
+    // Set price from and to based on the selected range
+    const selectedRange = priceOptions.find(option => option.id === rangeId);
+    if (selectedRange) {
+      setPriceFrom(selectedRange.from);
+      setPriceTo(selectedRange.to);
+    }
   };
 
   const handleLocationChange = (location: string) => {
     setSelectedLocation(location);
-    console.log('Location filter:', location);
   };
 
   const createApiParams = (): RoomAvailabilityParams => {
@@ -113,11 +112,11 @@ const RoomList = () => {
 
   useEffect(() => {
     fetchRooms();
-  }, [selectedFixedPrice, priceTo, selectedLocation]);
+  }, [selectedLocation]);
 
   return (
     <div className="flex flex-col md:flex-row gap-6">
-      <div className="w-full md:w-8/12">
+      <div className="w-full md:w-/12">
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center gap-2">
             <span className="text-xl font-semibold">{pagination.total || rooms.length}</span>
@@ -222,27 +221,58 @@ const RoomList = () => {
           <h3 className="text-lg font-medium mb-4 text-[#405f2d]">{t('filterByPrice')}</h3>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm mb-1 text-gray-700">{t('priceRange')}</label>
+              {/* Slider for visual representation */}
               <input
                 type="range"
-                className="w-full accent-[#759d3f]"
+                className="w-full accent-[#759d3f] mb-4"
                 min="0"
-                max="1000000"
+                max="2000000"
                 step="50000"
                 value={priceTo}
-                onChange={(e) => handlePriceRangeChange(Number(e.target.value))}
+                onChange={(e) => setPriceTo(Number(e.target.value))}
               />
-              <div className="flex justify-between gap-2 mt-3">
-                <div className="w-1/2">
-                  <label className="text-xs text-gray-500 block mb-1">{t('priceFrom')}</label>
-                  <div className="border rounded p-2 text-center bg-gray-50">
-                    <span>{priceFrom.toLocaleString()}₫</span>
+
+              {/* From and To inputs */}
+              <div className="flex justify-between gap-4">
+                <div className="flex-1">
+                  <label className="block text-sm mb-2 text-gray-700">Từ</label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      className="w-full p-2 border rounded pr-8"
+                      placeholder="Giá"
+                      min="0"
+                      max={priceTo}
+                      value={priceFrom}
+                      onChange={(e) => {
+                        const value = Number(e.target.value);
+                        if (value <= priceTo) {
+                          setPriceFrom(value);
+                        }
+                      }}
+                    />
+                    <span className="absolute right-2 top-1/2 transform -translate-y-1/2 font-bold">đ</span>
                   </div>
                 </div>
-                <div className="w-1/2">
-                  <label className="text-xs text-gray-500 block mb-1">{t('priceTo')}</label>
-                  <div className="border rounded p-2 text-center bg-gray-50">
-                    <span>{priceTo.toLocaleString()}₫</span>
+
+                <div className="flex-1">
+                  <label className="block text-sm mb-2 text-gray-700">Đến</label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      className="w-full p-2 border rounded pr-8"
+                      placeholder="Giá"
+                      min={priceFrom}
+                      max="2000000"
+                      value={priceTo}
+                      onChange={(e) => {
+                        const value = Number(e.target.value);
+                        if (value >= priceFrom) {
+                          setPriceTo(value);
+                        }
+                      }}
+                    />
+                    <span className="absolute right-2 top-1/2 transform -translate-y-1/2 font-bold">đ</span>
                   </div>
                 </div>
               </div>
@@ -255,16 +285,16 @@ const RoomList = () => {
           <h3 className="text-lg font-medium mb-4 text-[#405f2d]">{t('fixedPrice')}</h3>
           <div className="space-y-2">
             {priceOptions.map((option) => (
-              <div key={option.value} className="flex items-center py-1">
+              <div key={option.id} className="flex items-center py-1">
                 <input
                   type="radio"
-                  id={`price-${option.value}`}
+                  id={`price-${option.id}`}
                   name="price-option"
                   className="mr-2 accent-[#759d3f]"
-                  checked={selectedFixedPrice === option.value}
-                  onChange={() => handleFixedPriceChange(option.value)}
+                  checked={selectedPriceRange === option.id}
+                  onChange={() => handleFixedPriceRangeChange(option.id)}
                 />
-                <label htmlFor={`price-${option.value}`} className="text-gray-700">{option.label}</label>
+                <label htmlFor={`price-${option.id}`} className="text-gray-700">{option.label}</label>
               </div>
             ))}
           </div>
