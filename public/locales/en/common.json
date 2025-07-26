@@ -75,5 +75,24 @@
     "allLocations": "All Locations",
     "room": "room",
     "rooms_plural": "rooms",
-    "apply": "Apply"
+    "apply": "Apply",
+    "footer": {
+        "companyInfo": "Company Information",
+        "companyName": "Company Name",
+        "companyFullName": "PCLAND INVESTMENT & PROPERTY MANAGEMENT JSC",
+        "aboutXHotelMember": "About X Hotel Member",
+        "aboutXHotel": "About X Hotel",
+        "news": "X News",
+        "support": "Support",
+        "terms": "Terms & Conditions",
+        "generalRules": "General Rules",
+        "privacyPolicy": "Privacy Policy",
+        "bookingPolicy": "Booking Policy",
+        "cancellationPolicy": "Cancellation & Refund Policy",
+        "faq": "FAQ",
+        "contact": "Contact",
+        "businessRegistration": "Business Registration No. 0107870863, issued on 01-06-2017 by HANOI DEPARTMENT OF PLANNING AND INVESTMENT",
+        "address": "Address: Tay Phuong Commune, Hanoi",
+        "email": "Email"
+    }
 }

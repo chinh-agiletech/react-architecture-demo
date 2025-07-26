@@ -75,5 +75,24 @@
     "allLocations": "Tất cả vị trí",
     "room": "phòng",
     "rooms_plural": "phòng",
-    "apply": "Áp dụng"
+    "apply": "Áp dụng",
+    "footer": {
+        "companyInfo": "Công ty cổ phần",
+        "companyName": "Công ty cổ phần",
+        "companyFullName": "CÔNG TY CỔ PHẦN ĐT & QL TÀI SẢN PCLAND",
+        "aboutXHotelMember": "Về X Hotel Member",
+        "aboutXHotel": "Về X Hotel",
+        "news": "X News",
+        "support": "Hỗ trợ",
+        "terms": "Chính sách và điều khoản",
+        "generalRules": "Quy định chung",
+        "privacyPolicy": "Chính sách bảo mật",
+        "bookingPolicy": "Chính sách giao và nhận phòng",
+        "cancellationPolicy": "Chính sách đổi, trả phòng và hoàn tiền",
+        "faq": "FAQ",
+        "contact": "Liên hệ",
+        "businessRegistration": "GPKD số 0107870863, ngày cấp 01-06-2017, nơi cấp SỞ KẾ HOẠCH VÀ ĐẦU TƯ THÀNH PHỐ HÀ NỘI",
+        "address": "Địa chỉ: Xã Tây Phương, Hà Nội",
+        "email": "Email"
+    }
 }

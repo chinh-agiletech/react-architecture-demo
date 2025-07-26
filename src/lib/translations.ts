@@ -77,7 +77,26 @@ export const translations = {
       "filterByLocation": "Filter by location",
       "allLocations": "All Locations",
       "room": "room",
-      "rooms_plural": "rooms"
+      "rooms_plural": "rooms",
+      "footer": {
+        "companyInfo": "Company Information",
+        "companyName": "Company Name",
+        "companyFullName": "PCLAND INVESTMENT & PROPERTY MANAGEMENT JSC",
+        "aboutXHotelMember": "About X Hotel Member",
+        "aboutXHotel": "About X Hotel",
+        "news": "X News",
+        "support": "Support",
+        "terms": "Terms & Conditions",
+        "generalRules": "General Rules",
+        "privacyPolicy": "Privacy Policy",
+        "bookingPolicy": "Booking Policy",
+        "cancellationPolicy": "Cancellation & Refund Policy",
+        "faq": "FAQ",
+        "contact": "Contact",
+        "businessRegistration": "Business Registration No. 0107870863, issued on 01-06-2017 by HANOI DEPARTMENT OF PLANNING AND INVESTMENT",
+        "address": "Address: Tay Phuong Commune, Hanoi",
+        "email": "Email"
+      }
     }
   },
   vi: {
@@ -157,7 +176,26 @@ export const translations = {
       "filterByLocation": "Lọc theo vị trí",
       "allLocations": "Tất cả vị trí",
       "room": "phòng",
-      "rooms_plural": "phòng"
+      "rooms_plural": "phòng",
+      "footer": {
+        "companyInfo": "Công ty cổ phần",
+        "companyName": "Công ty cổ phần",
+        "companyFullName": "CÔNG TY CỔ PHẦN ĐT & QL TÀI SẢN PCLAND",
+        "aboutXHotelMember": "Về X Hotel Member",
+        "aboutXHotel": "Về X Hotel",
+        "news": "X News",
+        "support": "Hỗ trợ",
+        "terms": "Chính sách và điều khoản",
+        "generalRules": "Quy định chung",
+        "privacyPolicy": "Chính sách bảo mật",
+        "bookingPolicy": "Chính sách giao và nhận phòng",
+        "cancellationPolicy": "Chính sách đổi, trả phòng và hoàn tiền",
+        "faq": "FAQ",
+        "contact": "Liên hệ",
+        "businessRegistration": "GPKD số 0107870863, ngày cấp 01-06-2017, nơi cấp SỞ KẾ HOẠCH VÀ ĐẦU TƯ THÀNH PHỐ HÀ NỘI",
+        "address": "Địa chỉ: Xã Tây Phương, Hà Nội",
+        "email": "Email"
+      }
     }
   }
 };
