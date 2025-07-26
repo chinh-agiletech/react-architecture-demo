@@ -24,15 +24,8 @@ function Header()
 
     const handleLanguageChange = (value: string | number) => {
         const locale = value as string;
-        
-        // Lưu ngôn ngữ vào localStorage
         localStorage.setItem('language', locale);
-        
-        // Tải lại trang ngay lập tức không đợi đổi ngôn ngữ
         window.location.reload();
-        
-        // Không cần set state và change language vì trang sẽ reload
-        // và useEffect sẽ tự đọc giá trị từ localStorage
     };
 
     return (
@@ -63,37 +56,37 @@ function Header()
                 <div className="flex items-center justify-between py-4">
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
-                        <img 
-                            src="/logo/logo_new.webp" 
-                            alt="X Hotel Logo" 
-                            width={150} 
-                            height={30} 
+                        <img
+                            src="/logo/logo_new.webp"
+                            alt="X Hotel Logo"
+                            width={150}
+                            height={30}
                             className="object-contain h-8 sm:h-9 md:h-10 w-auto"
                         />
                     </Link>
 
                     {/* Navigation */}
                     <nav className="flex items-center space-x-8">
-                        <Link 
-                            href="/member" 
+                        <Link
+                            href="/member"
                             className="text-[#405f2d] hover:text-[#5a8941] transition-colors text-sm font-medium hover:underline"
                         >
                             {t('xMember')}
                         </Link>
-                        <Link 
-                            href="/long-stay" 
+                        <Link
+                            href="/long-stay"
                             className="text-[#405f2d] hover:text-[#5a8941] transition-colors text-sm font-medium hover:underline"
                         >
                             {t('longStay')}
                         </Link>
-                        <Link 
-                            href="/about" 
+                        <Link
+                            href="/about"
                             className="text-[#405f2d] hover:text-[#5a8941] transition-colors text-sm font-medium hover:underline"
                         >
                             {t('aboutXHotel')}
                         </Link>
-                        <Link 
-                            href="/cart" 
+                        <Link
+                            href="/cart"
                             className="flex items-center justify-center h-10 w-10 rounded-full bg-[#f5f8f3] hover:bg-[#e8f0e3] text-[#405f2d] transition-all"
                         >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

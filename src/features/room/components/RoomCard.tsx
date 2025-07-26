@@ -15,18 +15,18 @@ const RoomCard: React.FC<RoomCardProps> = ({
 }) => {
   // Initialize i18n
   const { t } = useTranslation();
-  
+
   return (
     <div className="border border-none rounded-lg overflow-hidden shadow-md flex flex-col md:flex-row">
       {/* Room Image */}
       <div className="w-full md:w-2/5">
-        <img 
+        <img
           src={image}
-          alt={`${name} Room`} 
+          alt={`${name} Room`}
           className="w-full h-full object-cover"
         />
       </div>
-      
+
       {/* Room Details */}
       <div className="w-full md:w-3/5 p-5">
         <div className="flex flex-col md:flex-row">
@@ -38,7 +38,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
                 <p className="text-[#759d3f]">{location}</p>
               </div>
             </div>
-            
+
             {/* Amenities */}
             <div className="flex flex-wrap gap-4 my-4">
               {amenities.slice(0, 4).map((amenity, index) => (
@@ -58,7 +58,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
               )}
             </div>
           </div>
-          
+
           {/* Right column - Price information */}
           <div className="w-full md:w-1/3 mt-4 md:mt-0 flex flex-col items-start md:items-end">
             <div className="md:text-right">
@@ -69,10 +69,10 @@ const RoomCard: React.FC<RoomCardProps> = ({
               <p className="text-sm">{currency}/{t('perNight')}</p>
               <p className="text-xs text-gray-500 min-w-[160px]">{t('taxesIncluded')}</p>
             </div>
-            
+
             <div className="mt-4">
               <Link href={detailUrl}>
-                <button className="bg-[#759d3f] hover:bg-green-700 
+                <button className="bg-[#759d3f] hover:bg-green-700
                 text-white px-6 py-2 rounded-full text-sm transition-colors min-w-[100px]">
                   {t('viewRoom')}
                 </button>

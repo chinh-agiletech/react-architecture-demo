@@ -14,13 +14,204 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ededed;
+    --foreground: #171717;
   }
 }
 
 body {
-  background: var(--background);
+  background: var(--background) !important;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Responsive Styles */
+
+/* Mobile First Approach */
+/* Base styles are for mobile */
+
+/* Small devices (tablets, 640px and up) */
+@media (min-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Medium devices (laptops/desktops, 768px and up) */
+@media (min-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Large devices (large laptops and desktops, 1024px and up) */
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Extra large devices (large desktops, 1280px and up) */
+@media (min-width: 1280px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Container Class for consistent width and padding */
+.container {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* Utility classes for responsive layouts */
+.hidden-xs {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .hidden-xs {
+    display: initial;
+  }
+
+  .hidden-sm {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .hidden-sm {
+    display: initial;
+  }
+
+  .hidden-md {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hidden-md {
+    display: initial;
+  }
+
+  .hidden-lg {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hidden-lg {
+    display: initial;
+  }
+
+  .hidden-xl {
+    display: none;
+  }
+}
+
+/* Flex Grid System */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.col {
+  flex: 1 0 0%;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+/* Responsive column sizes */
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+/* Spacing utilities that adjust based on screen size */
+.m-responsive {
+  margin: 0.5rem;
+}
+
+.p-responsive {
+  padding: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .m-responsive {
+    margin: 0.75rem;
+  }
+
+  .p-responsive {
+    padding: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .m-responsive {
+    margin: 1rem;
+  }
+
+  .p-responsive {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .m-responsive {
+    margin: 1.5rem;
+  }
+
+  .p-responsive {
+    padding: 1.5rem;
+  }
 }
