@@ -215,3 +215,9 @@ body {
     padding: 1.5rem;
   }
 }
+
+
+/* Additional CSS variables */
+:root {
+  --primary-color: rgb(64, 95, 45);
+}

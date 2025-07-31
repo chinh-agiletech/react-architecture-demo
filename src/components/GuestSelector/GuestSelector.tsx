@@ -45,7 +45,7 @@ const GuestSelector: React.FC<GuestSelectorProps> = ({
         className="cursor-pointer flex items-center gap-2"
         onClick={() => setOpen(!open)}
       >
-        <FaBed className="text-gray-600 w-4 h-4 flex-shrink-0 transition-colors" />
+        <FaBed className="text-gray-600 w-6 h-6 flex-shrink-0 transition-colors" />
         <div>
           <p className="text-xs text-[#6d6d6d] transition-colors">{t('guests')}</p>
           <p className="font-semibold text-[#405f2d] text-sm truncate whitespace-nowrap transition-colors">

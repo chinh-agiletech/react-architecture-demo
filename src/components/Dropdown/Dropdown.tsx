@@ -46,7 +46,7 @@ const Dropdown = ({ options, selectedValue = "", onSelect, hideIcon = false }: D
         className="flex justify-center items-center gap-2 py-2 rounded-full cursor-pointer"
       >
         <div>
-          <p className="font-semibold text-[#405f2d] text-base transition-colors">
+          <p className="text-[#405f2d] text-base transition-colors">
             {selectedOption.label}
           </p>
         </div>
@@ -63,7 +63,7 @@ const Dropdown = ({ options, selectedValue = "", onSelect, hideIcon = false }: D
                   selectedOption.value === option.value
                     ? "bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100"
                     : "hover:bg-gray-100 text-green-800 dark:text-green-300"
-                } rounded-full font-semibold text-base hover:bg-green-200 dark:hover:bg-green-700 transition-colors text-center cursor-pointer`}
+                } rounded-full text-base hover:bg-green-200 dark:hover:bg-green-700 transition-colors text-center cursor-pointer`}
               >
                 {option.label}
               </button>

@@ -1,13 +1,25 @@
-// components/CustomCalendar.tsx
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { DateRange, Range, RangeKeyDict, Calendar } from "react-date-range";
+import { DateRange, Range, RangeKeyDict } from "react-date-range";
 import { vi } from "date-fns/locale";
-import { format, differenceInDays } from "date-fns";
+import { differenceInDays } from "date-fns";
 import 'react-date-range/dist/styles.css';
 import { useTranslation } from 'react-i18next';
 import 'react-date-range/dist/theme/default.css';
+
+// Custom date formatter for Vietnamese short format
+const formatVietnameseShort = (date: Date): string => {
+  const dayNames = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
+  const monthNames = ['Th01', 'Th02', 'Th03', 'Th04', 'Th05', 'Th06', 'Th07', 'Th08', 'Th09', 'Th10', 'Th11', 'Th12'];
+  
+  const dayOfWeek = dayNames[date.getDay()];
+  const day = date.getDate();
+  const month = monthNames[date.getMonth()];
+  const year = date.getFullYear();
+  
+  return `${dayOfWeek} ${day} ${month} ${year}`;
+};
 
 interface CustomCalendarProps {
   startDate?: Date;
@@ -15,7 +27,7 @@ interface CustomCalendarProps {
   onChange: (start: Date, end: Date) => void;
   startLabel?: string;
   endLabel?: string;
-  singleCalendar?: boolean; // Khi true sẽ hiển thị một calendar cho phép kéo chọn khoảng ngày
+  singleCalendar?: boolean;
 }
 
 const CustomCalendar: React.FC<CustomCalendarProps> = ({
@@ -24,13 +36,12 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({
   onChange,
   startLabel,
   endLabel,
-  singleCalendar = false // Mặc định sử dụng hai calendar song song
+  singleCalendar = false
 }) => {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation('common');
   const calendarRef = useRef<HTMLDivElement>(null);
 
-  // Use translated labels or fallback to provided values
   const finalStartLabel = startLabel || t('checkInDate');
   const finalEndLabel = endLabel || t('checkOutDate');
 
@@ -43,9 +54,9 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({
     }
   ]);
 
-  // Không cần state cho calendar riêng biệt nữa
-  const [nightCount, setNightCount] = useState(0);  useEffect(() => {
-    // Luôn sử dụng range cho cả hai mode (đơn và song song) để có thể kéo chọn range
+  const [nightCount, setNightCount] = useState(0);
+  
+  useEffect(() => {
     if (range[0].startDate && range[0].endDate) {
       const days = differenceInDays(range[0].endDate, range[0].startDate);
       setNightCount(days > 0 ? days : 0);
@@ -54,7 +65,6 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({
   }, [range, onChange]);
 
   useEffect(() => {
-    // Handle clicks outside the calendar to close it
     const handleClickOutside = (event: MouseEvent) => {
       if (calendarRef.current && !calendarRef.current.contains(event.target as Node)) {
         setOpen(false);
@@ -76,7 +86,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({
 
   return (
     <div className="relative">
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-6">
         {/* Check-in date display */}
         <div
           className="cursor-pointer"
@@ -84,7 +94,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({
         >
           <p className="text-sm text-[#6d6d6d]">{finalStartLabel}</p>
           <p className="font-semibold text-[#405f2d]">
-            {range[0].startDate && format(range[0].startDate, "EEE dd MMM yyyy", { locale: vi })}
+            {range[0].startDate && formatVietnameseShort(range[0].startDate)}
           </p>
         </div>
 
@@ -95,7 +105,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({
         >
           <p className="text-sm text-[#6d6d6d]">{finalEndLabel}</p>
           <p className="font-semibold text-[#405f2d]">
-            {range[0].endDate && format(range[0].endDate, "EEE dd MMM yyyy", { locale: vi })}
+            {range[0].endDate && formatVietnameseShort(range[0].endDate)}
           </p>
         </div>
       </div>
