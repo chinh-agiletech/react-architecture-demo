@@ -46,7 +46,7 @@ const Filter = () => {
             />
           </div>
 
-          <hr className="w-px h-8 bg-gray-300 border-0" />
+          <hr className="w-px h-10 bg-[#171717] border-0" />
 
           {/* Brand Selection */}
           <div className="flex items-center gap-2 min-w-[200px]">
@@ -63,7 +63,7 @@ const Filter = () => {
             />
           </div>
 
-          <hr className="w-px h-8 bg-gray-300 border-0" />
+          <hr className="w-px h-10 bg-[#171717] border-0" />
 
           {/* Date Selection */}
           <div className="flex items-center gap-2 min-w-[300px]">
@@ -85,7 +85,7 @@ const Filter = () => {
             </div>
           </div>
 
-          <hr className="w-px h-8 bg-gray-300 border-0" />
+          <hr className="w-px h-10 bg-[#171717] border-0" />
 
           {/* Guests */}
           <div className="flex items-center min-w-[200px]">

@@ -45,7 +45,7 @@
     "childrenLabel": "Children",
     "adultDescription": "Ages 6 and above",
     "childrenDescription": "Under 6 years",
-    "perNight": "per night",
+    "perNight": "night",
     "reviews": "reviews",
     "guests": "Guests",
     "bookNow": "Book Now",
@@ -76,6 +76,9 @@
     "room": "room",
     "rooms_plural": "rooms",
     "apply": "Apply",
+    "startingFrom": "ONLY FROM",
+    "tryAgain": "Try again",
+    "noRoomsFound": "No rooms found",
     "footer": {
         "companyInfo": "Company Information",
         "companyName": "Company Name",

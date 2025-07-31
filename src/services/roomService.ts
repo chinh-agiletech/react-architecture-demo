@@ -13,6 +13,7 @@ export enum HourPricingType {
 
 export enum BrandType {
   XCELLENT = 'XCELLENT',
+  XCELL = 'XCELL',
   STANDARD = 'STANDARD',
   PREMIUM = 'PREMIUM'
 }

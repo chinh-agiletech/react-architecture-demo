@@ -172,12 +172,13 @@ const RoomList = () => {
                 id={room.id}
                 name={room.name}
                 location={room.hotel?.branch?.name || ""}
-                image={room.photos?.[0]?.url || "/can-ho-khach-san-tai-thai-nguyen-phong-xhome-vip-1.webp"} /* Fallback image */
+                image={room.photos?.[0]?.url} /* Fallback image */
                 price={room.pricing?.unit || null}
                 amenities={room.amenities?.map(amenity => ({
                   name: amenity.name,
                   icon: amenity.icon?.url || ""
                 })) || []}
+                brand_type={room.hotel?.brand_type || room.room_type?.brand_type}
               />
             ))}
           </div>

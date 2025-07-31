@@ -78,6 +78,7 @@ export const translations = {
       "allLocations": "All Locations",
       "room": "room",
       "rooms_plural": "rooms",
+      "startingFrom": "ONLY FROM",
       "footer": {
         "companyInfo": "Company Information",
         "companyName": "Company Name",
@@ -177,6 +178,7 @@ export const translations = {
       "allLocations": "Tất cả vị trí",
       "room": "phòng",
       "rooms_plural": "phòng",
+      "startingFrom": "Chỉ từ",
       "footer": {
         "companyInfo": "Công ty cổ phần",
         "companyName": "Công ty cổ phần",

@@ -45,7 +45,7 @@
     "childrenLabel": "Trẻ em",
     "adultDescription": "Từ 6 tuổi trở lên",
     "childrenDescription": "Dưới 6 tuổi",
-    "perNight": "mỗi đêm",
+    "perNight": "đêm",
     "reviews": "đánh giá",
     "guests": "Số khách",
     "bookNow": "Đặt ngay",
@@ -76,6 +76,9 @@
     "room": "phòng",
     "rooms_plural": "phòng",
     "apply": "Áp dụng",
+    "startingFrom": "Chỉ từ",
+    "tryAgain": "Thử lại",
+    "noRoomsFound": "Không tìm thấy phòng nào",
     "footer": {
         "companyInfo": "Công ty cổ phần",
         "companyName": "Công ty cổ phần",

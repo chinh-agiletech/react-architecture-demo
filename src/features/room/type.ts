@@ -130,6 +130,7 @@ export interface RoomCardProps {
   currency?: string;
   amenities: Amenity[];
   detailUrl?: string;
+  brand_type?: string;
 }
 
 export interface RoomDetailProps{
