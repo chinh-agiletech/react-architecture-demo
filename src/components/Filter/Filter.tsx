@@ -14,28 +14,24 @@ const Filter = () => {
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
   const [selectedLocation, setSelectedLocation] = useState('');
-  const [selectedBrand, setSelectedBrand] = useState('all');
+  const [selectedBrand, setSelectedBrand] = useState('');
 
   // Mock data for selectors
   const locationOptions = [
-    { value: '', label: "Chọn vị trí"},
-    { value: 'hanoi', label: 'Hà Nội' },
-    { value: 'hcm', label: 'Hồ Chí Minh' },
-    { value: 'danang', label: 'Đà Nẵng' },
     { value: 'thainguyen', label: 'Thái Nguyên' },
   ];
 
   const brandOptions = [
-    { value: 'all', label: t('allBrands') },
-    { value: 'xhotel', label: 'X Hotel' },
-    { value: 'xluxury', label: 'X Luxury' },
+    { value: 'XCELLENT', label: 'Xcellent' },
+    { value: 'XHOME', label: 'Xhome' },
+    { value: 'XCELL', label: 'Xcell', customColor: 'purple' },
   ];
 
   return (
     <div className="w-full bg-white p-6 mx-auto py-10 shadow-[inset_0_0_10px_rgba(0,0,0,0.2)]">
       <div className="flex items-center justify-between gap-4 flex-wrap lg:flex-nowrap max-w-[1240px] mx-auto">
         {/* Left side - All filters */}
-        <div className="flex items-center gap-4 flex-wrap lg:flex-nowrap flex-1">
+        <div className="flex items-center gap-4 flex-wrap lg:flex-nowrap flex-1 justify-between">
           {/* Location Selection */}
           <div className="flex items-center gap-2 min-w-[200px]">
             <div className="flex items-center justify-center w-8 h-8">
@@ -45,6 +41,8 @@ const Filter = () => {
               options={locationOptions}
               selectedValue={selectedLocation}
               onSelect={(value) => setSelectedLocation(value)}
+              placeholder="Chọn vị trí"
+              label="Tỉnh / Thành phố"
             />
           </div>
 
@@ -60,6 +58,8 @@ const Filter = () => {
               selectedValue={selectedBrand}
               onSelect={(value) => setSelectedBrand(value)}
               hideIcon={true}
+              placeholder="Chọn thương hiệu"
+              label="Thương hiệu"
             />
           </div>
 

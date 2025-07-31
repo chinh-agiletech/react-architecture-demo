@@ -6,7 +6,7 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
+  --color-background: var(--primary-background-color);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -14,13 +14,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ededed;
+    --background: #f6f6f6;
     --foreground: #171717;
   }
 }
 
 body {
-  background: var(--background) !important;
+  background: var(--primary-background-color) !important;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -220,4 +220,5 @@ body {
 /* Additional CSS variables */
 :root {
   --primary-color: rgb(64, 95, 45);
+  --primary-background-color: rgb(246, 246, 246);
 }

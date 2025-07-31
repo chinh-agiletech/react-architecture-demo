@@ -108,7 +108,7 @@ export const getAvailableRooms = async (
     }
 
     const data = await response.json();
-
+    console.log('Available rooms data:', data);
     // Validate the response structure
     if (!data || typeof data !== 'object') {
       throw new Error('Invalid API response format');

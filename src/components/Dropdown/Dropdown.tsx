@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 type OptionType = {
   value: string;
   label: string;
+  customColor?: string;
 };
 
 interface DropdownProps {
@@ -13,15 +14,18 @@ interface DropdownProps {
   selectedValue?: string;
   onSelect: (value: string) => void;
   hideIcon?: boolean;
+  placeholder?: string;
+  label?: string
 }
 
-const Dropdown = ({ options, selectedValue = "", onSelect, hideIcon = false }: DropdownProps) => {
+const Dropdown = ({ options, selectedValue = "", onSelect, hideIcon = false, placeholder, label }: DropdownProps) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const { t } = useTranslation('common');
 
   // Find the selected option for display
-  const selectedOption = options.find((option) => option.value === selectedValue) || options[options.length - 1];
+  const selectedOption = options.find((option) => option.value === selectedValue);
+  const displayText = selectedOption ? selectedOption.label : (placeholder || "Chọn một tùy chọn");
 
   // Đóng khi click ra ngoài
   useEffect(() => {
@@ -47,27 +51,72 @@ const Dropdown = ({ options, selectedValue = "", onSelect, hideIcon = false }: D
       >
         <div>
           <p className="text-[#405f2d] text-base transition-colors">
-            {selectedOption.label}
+            {displayText}
           </p>
         </div>
       </button>
 
       {open && (
-        <div className="absolute z-10 mt-2 shadow-lg bg-[#f6f6f6] ring-1 ring-black/5 dark:ring-white/10 p-3 animate-fade-in-up rounded-lg transition-colors min-w-[450px]">
-          <div className="grid grid-cols-3 gap-4">
-            {options.map((option) => (
-              <button
-                key={option.value}
-                onClick={() => handleOptionSelect(option.value)}
-                className={`px-4 py-2 ${
-                  selectedOption.value === option.value
-                    ? "bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100"
-                    : "hover:bg-gray-100 text-green-800 dark:text-green-300"
-                } rounded-full text-base hover:bg-green-200 dark:hover:bg-green-700 transition-colors text-center cursor-pointer`}
-              >
-                {option.label}
-              </button>
-            ))}
+        <div className="absolute z-10 shadow-lg bg-[#fff] ring-1 ring-black/5 px-6 py-6 animate-fade-in-up rounded-lg transition-colors">
+          <div className="flex flex-col">
+            <p className="text-[#405f2d] text-base transition-colors pl-2">
+              {label}
+            </p>
+            <div className="flex py-2">
+            {options.map((option) => {
+              const isSelected = selectedValue === option.value;
+              const hasCustomColor = option.customColor;
+              
+              let buttonClass = `px-4 py-2 rounded-full border border-[#171717] text-base transition-colors text-center cursor-pointer whitespace-nowrap ml-2`;
+              let customStyle = {};
+              
+              if (hasCustomColor && option.customColor === 'purple') {
+                // Purple color styling for Xcell
+                if (isSelected) {
+                  buttonClass += ` border-purple-300`;
+                  customStyle = {
+                    backgroundColor: '#f3e8ff', // purple-100
+                    color: '#6b21a8' // purple-800
+                  };
+                } else {
+                  buttonClass += ` border-purple-200 hover:border-purple-300`;
+                  customStyle = {
+                    color: '#7c3aed', // purple-700
+                  };
+                }
+              } else {
+                // Default styling with black border for Xcellent and Xhome
+                if (isSelected) {
+                  buttonClass += ` bg-green-100 text-[#405f2d] border-[#171717]`;
+                } else {
+                  buttonClass += `text-[#405f2d] hover:bg-[#E3EFD8] border-[#171717] ml-2`;
+                }
+              }
+              
+              return (
+                <button
+                  key={option.value}
+                  onClick={() => handleOptionSelect(option.value)}
+                  className={buttonClass}
+                  style={customStyle}
+                  onMouseEnter={hasCustomColor && option.customColor === 'purple' && !isSelected ? 
+                    (e) => {
+                      e.currentTarget.style.backgroundColor = '#f3e8ff'; // purple-100 on hover
+                      e.currentTarget.style.color = '#6b21a8'; // purple-800 on hover
+                    } : undefined
+                  }
+                  onMouseLeave={hasCustomColor && option.customColor === 'purple' && !isSelected ?
+                    (e) => {
+                      e.currentTarget.style.backgroundColor = '';
+                      e.currentTarget.style.color = '#7c3aed'; // purple-700
+                    } : undefined
+                  }
+                >
+                  {option.label}
+                </button>
+              );
+            })}
+            </div>
           </div>
         </div>
       )}
