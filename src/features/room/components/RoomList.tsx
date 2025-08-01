@@ -115,7 +115,7 @@ const RoomList = () => {
   }, [selectedLocation]);
 
   return (
-    <div className="flex flex-col md:flex-row gap-6">
+    <div className="room-list flex flex-col md:flex-row gap-6">
       <div className="w-full md:w-/12">
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center gap-2">
@@ -165,7 +165,7 @@ const RoomList = () => {
 
         {/* Product List */}
         {!loading && !error && rooms.length > 0 && (
-          <div className="grid grid-cols-1 gap-6">
+          <div className="grid grid-cols-1 gap-6 bg-[#fcfcfc]">
             {rooms.map(room => (
               <RoomCard
                 key={room.id}
@@ -218,11 +218,11 @@ const RoomList = () => {
       {/* Right Column - Filters */}
       <div className="w-full md:w-4/12">
       {/* Location Filter - Map View */}
-        <div className="rounded-lg p-4 border border-gray-200 bg-white shadow-sm mb-4">
+        <div className="">
           <h3 className="text-lg font-medium mb-4 text-[#405f2d]">{t('filterByLocation')}</h3>
 
           {/* Google Maps Iframe */}
-          <div className="w-full h-[250px] border rounded mb-4 overflow-hidden">
+          <div className="w-full h-[150px] border border-gray-400 rounded mb-4 overflow-hidden">
             <iframe
               src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1600087.0824830188!2d106.40344987989903!3d16.69734200064431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1658278074260!5m2!1sen!2s${
                 selectedLocation !== 'all'
@@ -231,67 +231,14 @@ const RoomList = () => {
               }`}
               width="100%"
               height="100%"
-              style={{ border: 0 }}
               allowFullScreen={false}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-
-          {/* Location Markers on top of map */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {locationOptions.filter(loc => loc.value !== 'all').map((location) => (
-              <div
-                key={location.value}
-                className={`flex items-center cursor-pointer transition-all duration-200 px-2 py-1 rounded ${
-                  selectedLocation === location.value
-                    ? 'bg-[#759d3f] text-white'
-                    : 'bg-white border border-[#759d3f] text-[#759d3f] hover:bg-[#f3f7eb]'
-                }`}
-                onClick={() => handleLocationChange(location.value)}
-              >
-                <div className="flex items-center gap-1">
-                  <span className="text-xs font-medium">{location.label}</span>
-                  <span className="text-xs ml-1">({location.count})</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Location List */}
-          <div className="space-y-2">
-            <div
-              key="all"
-              className={`flex items-center py-1 px-2 rounded cursor-pointer ${
-                selectedLocation === 'all' ? 'bg-[#f3f7eb]' : 'hover:bg-gray-50'
-              }`}
-              onClick={() => handleLocationChange('all')}
-            >
-              <span className={`mr-2 ${selectedLocation === 'all' ? 'text-[#759d3f] font-medium' : 'text-gray-700'}`}>
-                {t('allLocations')} ({locationOptions.reduce((sum, loc) => loc.value !== 'all' ? sum + loc.count : sum, 0)})
-              </span>
-            </div>
-
-            {locationOptions.filter(loc => loc.value !== 'all').map((option) => (
-              <div
-                key={option.value}
-                className={`flex items-center justify-between py-1 px-2 rounded cursor-pointer ${
-                  selectedLocation === option.value ? 'bg-[#f3f7eb]' : 'hover:bg-gray-50'
-                }`}
-                onClick={() => handleLocationChange(option.value)}
-              >
-                <span className={`${selectedLocation === option.value ? 'text-[#759d3f] font-medium' : 'text-gray-700'}`}>
-                  {option.label}
-                </span>
-                <span className="text-sm text-gray-500">
-                  {option.count} {option.count === 1 ? 'room' : 'rooms'}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
         {/* Price Range Filter */}
-        <div className="rounded-lg p-4 border border-gray-200 mb-4 bg-white shadow-sm">
+        <div className="">
           <h3 className="text-lg font-medium mb-4 text-[#405f2d]">{t('filterByPrice')}</h3>
           <div className="space-y-4">
             <div>
@@ -355,7 +302,7 @@ const RoomList = () => {
         </div>
 
         {/* Fixed Price Filter */}
-        <div className="rounded-lg p-4 border border-gray-200 mb-4 bg-white shadow-sm">
+        <div className="rounded-lg p-4">
           <h3 className="text-lg font-medium mb-4 text-[#405f2d]">{t('fixedPrice')}</h3>
           <div className="space-y-2">
             {priceOptions.map((option) => (

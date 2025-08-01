@@ -46,7 +46,7 @@ const Filter = () => {
             />
           </div>
 
-          <hr className="w-px h-10 bg-[#171717] border-0" />
+          <hr className="w-full h-px bg-[#171717] border-0 sm:w-px sm:h-10" />
 
           {/* Brand Selection */}
           <div className="flex items-center gap-2 min-w-[200px]">
@@ -63,7 +63,7 @@ const Filter = () => {
             />
           </div>
 
-          <hr className="w-px h-10 bg-[#171717] border-0" />
+          <hr className="w-full h-px bg-[#171717] border-0 sm:w-px sm:h-10" />
 
           {/* Date Selection */}
           <div className="flex items-center gap-2 min-w-[300px]">
@@ -85,7 +85,7 @@ const Filter = () => {
             </div>
           </div>
 
-          <hr className="w-px h-10 bg-[#171717] border-0" />
+          <hr className="w-full h-px bg-[#171717] border-0 sm:w-px sm:h-10" />
 
           {/* Guests */}
           <div className="flex items-center min-w-[200px]">
@@ -101,7 +101,8 @@ const Filter = () => {
         </div>
 
         {/* Right side - Search Button */}
-        <button className="bg-[var(--primary-color)] text-white font-semibold py-2 px-5 rounded-full transition-colors duration-200 min-w-[140px] ml-4">
+        <button className="bg-[var(--primary-color)] text-white font-semibold py-2 rounded-full transition-colors duration-200 
+        w-full">
           {t('searchRooms')}
         </button>
       </div>

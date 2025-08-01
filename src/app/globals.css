@@ -216,6 +216,16 @@ body {
   }
 }
 
+@media (min-width: 360px) and (max-width: 768px){
+  .room-card p {
+    font-size: 1.5rem; /* 18px */
+  }
+
+  .room-list {
+    padding: 0 1rem
+  }
+}
+
 
 /* Additional CSS variables */
 :root {

@@ -9,6 +9,16 @@ const nextConfig = {
     // Tương tự, bỏ qua lỗi ESLint khi build
     ignoreDuringBuilds: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'file.xhotel.vn',
+        port: '',
+        pathname: '**',
+      },
+    ],
+  },
   // Các cấu hình khác của dự án
 };
 
