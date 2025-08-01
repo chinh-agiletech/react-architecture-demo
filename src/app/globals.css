@@ -221,6 +221,10 @@ body {
     font-size: 1.5rem; /* 18px */
   }
 
+  .room-card .taxe-included{
+    font-size: 0.775rem; /* 14px */
+  }
+
   .room-list {
     padding: 0 1rem
   }

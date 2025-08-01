@@ -148,7 +148,7 @@ export const translations = {
       "childrenLabel": "Trẻ em",
       "adultDescription": "Từ 6 tuổi trở lên",
       "childrenDescription": "Dưới 6 tuổi",
-      "perNight": "mỗi đêm",
+      "perNight": "đêm",
       "reviews": "đánh giá",
       "guests": "Số khách",
       "bookNow": "Đặt ngay",

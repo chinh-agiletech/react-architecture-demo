@@ -125,11 +125,35 @@ function Header()
 
             {/* Mobile Menu Overlay */}
             {isMobileMenuOpen && (
-                <div className="md:hidden fixedbg-opacity-50 z-40" onClick={toggleMobileMenu}>
-                    <div className="fixed inset-y-0 right-0 w-full bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out">
+                <div className="md:hidden fixed bg-opacity-50 z-40" onClick={toggleMobileMenu}>
+                    <div className="fixed inset-y-0 right-0 w-full bg-white shadow-xl z-50 transform transition-all duration-300 ease-in-out"
+                         style={{
+                             animation: 'slideInLeft 0.3s ease-out forwards',
+                         }}
+                    >
+                        <style jsx>{`
+                            @keyframes slideInLeft {
+                                from {
+                                    transform: translateX(-100%);
+                                    opacity: 0;
+                                }
+                                to {
+                                    transform: translateX(0);
+                                    opacity: 1;
+                                }
+                            }
+                        `}</style>
                         {/* Mobile menu header */}
                         <div className="flex items-center justify-between p-4 border-b">
-                            <h2 className="text-lg font-semibold text-[#1d1d1d]">X Hotel</h2>
+                            <Link href="/" className="flex items-center">
+                                <Image
+                                    src="/logo/logo_new.webp"
+                                    alt="X Hotel Logo"
+                                    width={150}
+                                    height={30}
+                                    className="object-contain h-8 sm:h-9 md:h-10 w-auto"
+                                />
+                            </Link>
                             <button
                                 onClick={toggleMobileMenu}
                                 className="flex items-center justify-center h-8 w-8 text-[#1d1d1d]"
@@ -142,7 +166,7 @@ function Header()
                         </div>
 
                         {/* Mobile menu content */}
-                        <div className="flex flex-col h-full p-4">
+                        <div className="flex h-full p-4">
                             {/* User Section */}
                             <div className="text-center flex-1">
                                 <h3 className="text-xl font-semibold text-[#1d1d1d] mb-2">{t('xMember')}</h3>
@@ -158,8 +182,8 @@ function Header()
                             </div>
 
                             {/* Language Selector - Moved to bottom and reduced width */}
-                            <div className="border-t pt-4 mt-auto">
-                                <div className="flex items-center justify-center space-x-3">
+                            <div className="">
+                                <div className="">
                                     <Flag country={currentLanguage === 'vi' ? 'vi' : 'en'} />
                                     <SelectComponent
                                         options={[
@@ -168,7 +192,7 @@ function Header()
                                         ]}
                                         defaultValue={currentLanguage}
                                         onChange={handleLanguageChange}
-                                        className="w-[200px] text-sm"
+                                        className="w-[200px] text-md"
                                     />
                                 </div>
                             </div>

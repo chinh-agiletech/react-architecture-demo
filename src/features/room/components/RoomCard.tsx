@@ -10,7 +10,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
   location,
   image,
   price,
-  currency = 'VND',
+  currency = 'Đồng',
   amenities,
   detailUrl = `/product/${id}`,
   brand_type,
@@ -128,9 +128,9 @@ const RoomCard: React.FC<RoomCardProps> = ({
                   <Image 
                     src={amenity.icon} 
                     alt={amenity.name}
-                    width={16}
-                    height={16}
-                    className="h-4 w-4"
+                    width={20}
+                    height={20}
+                    className="h-6 w-6"
                   />
                 </span>
                 <span 
@@ -154,11 +154,13 @@ const RoomCard: React.FC<RoomCardProps> = ({
           <div className="flex flex-col">
             <div>
               <p className="text-sm">{t('startingFrom')}</p>
-              <p className="text-xl font-semibold" style={{ color: priceColor }}>
-                {price ? price.format.replace(/\s*VND\s*/g, '') : '0'}
-              </p>
-              <p className="text-xs">{currency}/{t('perNight')}</p>
-              <p className="text-xs text-gray-500">{t('taxesIncluded')}</p>
+                <div className="flex items-baseline gap-1">
+                <p className="text-xl font-semibold" style={{ color: priceColor }}>
+                  {price ? price.format.replace(/\s*VND\s*/g, '') : '0'}
+                </p>
+                <p className="text-xs">{currency}/{t('perNight')}</p>
+                </div>
+              <p className="text-xs text-gray-500 taxe-included">{t('taxesIncluded')}</p>
             </div>
 
             <div>
