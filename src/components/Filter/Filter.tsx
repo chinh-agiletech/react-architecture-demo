@@ -1,30 +1,30 @@
-"use client"
+"use client";
 
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import Image from 'next/image';
-import Dropdown from '../Dropdown/Dropdown';
-import CustomCalendar from '../CustomCalendar/CustomCalendar';
-import GuestSelector from '../GuestSelector/GuestSelector';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import Image from "next/image";
+import Dropdown from "../Dropdown/Dropdown";
+import CustomCalendar from "../Ui/CustomCalendar/CustomCalendar";
+import GuestSelector from "../GuestSelector/GuestSelector";
 
 const Filter = () => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
   const [checkInDate, setCheckInDate] = useState(new Date());
-  const [checkOutDate, setCheckOutDate] = useState(new Date(new Date().setDate(new Date().getDate() + 1)));
+  const [checkOutDate, setCheckOutDate] = useState(
+    new Date(new Date().setDate(new Date().getDate() + 1))
+  );
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
-  const [selectedLocation, setSelectedLocation] = useState('');
-  const [selectedBrand, setSelectedBrand] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState("");
 
   // Mock data for selectors
-  const locationOptions = [
-    { value: 'thainguyen', label: 'Thái Nguyên' },
-  ];
+  const locationOptions = [{ value: "thainguyen", label: "Thái Nguyên" }];
 
   const brandOptions = [
-    { value: 'XCELLENT', label: 'Xcellent' },
-    { value: 'XHOME', label: 'Xhome' },
-    { value: 'XCELL', label: 'Xcell', customColor: 'purple' },
+    { value: "XCELLENT", label: "Xcellent" },
+    { value: "XHOME", label: "Xhome" },
+    { value: "XCELL", label: "Xcell", customColor: "purple" },
   ];
 
   return (
@@ -35,7 +35,12 @@ const Filter = () => {
           {/* Location Selection */}
           <div className="flex items-center gap-2 min-w-[200px]">
             <div className="flex items-center justify-center w-8 h-8">
-              <Image src="/logo/globe.svg" alt="Location icon" width={24} height={24} />
+              <Image
+                src="/logo/globe.svg"
+                alt="Location icon"
+                width={24}
+                height={24}
+              />
             </div>
             <Dropdown
               options={locationOptions}
@@ -51,7 +56,12 @@ const Filter = () => {
           {/* Brand Selection */}
           <div className="flex items-center gap-2 min-w-[200px]">
             <div className="flex items-center justify-center w-8 h-8">
-              <Image src="/logo/branch-logo-black.svg" alt="Branch logo" width={24} height={24} />
+              <Image
+                src="/logo/branch-logo-black.svg"
+                alt="Branch logo"
+                width={24}
+                height={24}
+              />
             </div>
             <Dropdown
               options={brandOptions}
@@ -66,10 +76,15 @@ const Filter = () => {
           <hr className="w-full h-px bg-[#171717] border-0 sm:w-px sm:h-10" />
 
           {/* Date Selection */}
-          <div className="flex items-center gap-2 min-w-[300px]">
+          <div className="flex items-center gap-2 min-w-[400px]">
             <div className="flex items-center gap-2">
               <div className="flex items-center justify-center w-8 h-8">
-                <Image src="/calendar-249.png" alt="Calendar icon" width={24} height={24} />
+                <Image
+                  src="/calendar-249.png"
+                  alt="Calendar icon"
+                  width={24}
+                  height={24}
+                />
               </div>
               <CustomCalendar
                 startDate={checkInDate}
@@ -78,8 +93,8 @@ const Filter = () => {
                   setCheckInDate(start);
                   setCheckOutDate(end);
                 }}
-                startLabel={t('checkInDate')}
-                endLabel={t('checkOutDate')}
+                startLabel={t("checkInDate")}
+                endLabel={t("checkOutDate")}
                 singleCalendar={false} // Sử dụng hai calendar song song với khả năng kéo chọn khoảng thời gian
               />
             </div>
@@ -101,9 +116,11 @@ const Filter = () => {
         </div>
 
         {/* Right side - Search Button */}
-        <button className="bg-[var(--primary-color)] text-white font-semibold py-2 rounded-full transition-colors duration-200 
-        w-full">
-          {t('searchRooms')}
+        <button
+          className="bg-[var(--primary-color)] text-white font-semibold py-2 rounded-full transition-colors duration-200 
+        w-full"
+        >
+          {t("searchRooms")}
         </button>
       </div>
     </div>
@@ -111,4 +128,3 @@ const Filter = () => {
 };
 
 export default Filter;
-
