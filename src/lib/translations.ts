@@ -50,7 +50,7 @@ export const translations = {
       childrenDescription: "Under 6 years",
       perNight: "per night",
       reviews: "reviews",
-      guests: "Guests",
+      guests: "Guest & Room",
       bookNow: "Book Now",
       contactHost: "Contact Host",
       roomFeatures: "Room Features",
