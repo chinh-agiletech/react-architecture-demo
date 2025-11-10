@@ -147,7 +147,7 @@ const RoomList = () => {
               {t("suitableChoices")}
             </h2>
           </div>
-          <div className="w-[200px] py-[8px] px-[16px] border border-[#e7e7e7] bg-white rounded-[8px]">
+          <div className="max-w-[155px]">
             <SelectComponent
               options={[
                 { value: "default", label: t("sortDefault") },
@@ -156,7 +156,7 @@ const RoomList = () => {
               ]}
               defaultValue="default"
               onChange={(value) => handleSortChange(value as string)}
-              className="border border-none"
+              className="border border-none py-[8px] px-[16px]"
             />
           </div>
         </div>

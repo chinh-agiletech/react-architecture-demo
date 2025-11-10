@@ -93,47 +93,52 @@ const SelectComponent: React.FC<SelectComponentProps> = ({
   return (
     <div ref={selectRef} className={`relative w-full ${className}`}>
       <div
-        className={`flex items-center
-                    justify-between px-2 py-1 cursor-pointer bg-transparent hover:text-[#5a8941] transition-colors ${
+        className={`flex flex-col items-center bg-white rounded-[8px] border-[#f6f6f6]
+                    justify-between px-[16px] py-[14px] cursor-pointer hover:text-[#5a8941] transition-colors ${
                       disabled ? "opacity-60 cursor-not-allowed" : ""
                     }`}
         onClick={() => !disabled && setIsOpen(!isOpen)}
       >
-        <div className="truncate text-sm font-medium">
-          {selectedOption ? selectedOption.label : placeholder}
-        </div>
-        <div
-          className={`transition-transform ml-1 ${isOpen ? "rotate-180" : ""}`}
-        >
-          <svg
-            className="w-3 h-3"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        Sort by
+        <div className="flex items-center gap-1">
+          <div className="truncate text-lg font-medium text-[#759d3f]">
+            {selectedOption ? selectedOption.label : placeholder}
+          </div>
+          <div
+            className={`transition-transform ml-1 ${
+              isOpen ? "rotate-180" : ""
+            }`}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
+            <svg
+              className="w-3 h-3 text-[#759d3f]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
         </div>
       </div>
 
       {isOpen && !disabled && (
-        <div className="absolute w-full mt-1 bg-white rounded-md shadow-lg max-h-60 overflow-auto z-10">
+        <div className="absolute w-[220px] bg-white mt-1 rounded-md shadow-lg left-[-100px] z-10 p-[16px] flex flex-col gap-[4px]">
           {options.map((option, index) => (
             <div
               key={index}
-              className={`px-3 py-2 cursor-pointer hover:bg-[#f5f8f3] text-sm transition-colors ${
+              className={` cursor-pointer hover:bg-[#f5f8f3] transition-colors text-lg p-[8px] rounded-[8px] ${
                 selectedOption?.value === option.value
                   ? "bg-[#e8f0e3] text-[#405f2d] font-medium"
                   : ""
               }`}
               onClick={() => handleOptionClick(option)}
             >
-              {option.label}
+              <span className="text-[20px] font-600">{option.label}</span>
             </div>
           ))}
         </div>
