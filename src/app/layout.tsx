@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import I18nProvider from '../lib/I18nProvider';
+import I18nProvider from "../lib/I18nProvider";
 import { Mulish } from "next/font/google";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,10 +12,10 @@ const geistSans = Geist({
 });
 
 const mulish = Mulish({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-mulish',
-  display: 'swap',
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-mulish",
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -37,9 +39,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${mulish.variable} antialiased`}
       >
         <I18nProvider>
-          <main className="min-h-screen">
-            {children}
-          </main>
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
         </I18nProvider>
       </body>
     </html>
