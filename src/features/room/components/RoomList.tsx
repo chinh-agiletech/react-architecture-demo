@@ -147,7 +147,7 @@ const RoomList = () => {
               {t("suitableChoices")}
             </h2>
           </div>
-          <div className="flex items-center gap-2 w-[200px]">
+          <div className="w-[200px] py-[8px] px-[16px] border border-[#e7e7e7] bg-white rounded-[8px]">
             <SelectComponent
               options={[
                 { value: "default", label: t("sortDefault") },

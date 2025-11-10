@@ -29,7 +29,7 @@ const Filter = () => {
 
   return (
     <div className="w-full bg-white">
-      <div className="flex items-center justify-between flex-wrap lg:flex-nowrap px-[100px] gap-[16px] mx-auto w-full  max-w-[1440px] sm:gap-x-[20px] sm:gap-y-[30px] p-[24px]">
+      <div className="flex items-center justify-between flex-wrap lg:flex-nowrap px-[100px] py-[32px] gap-[16px] mx-auto w-full  max-w-[1440px] sm:gap-x-[20px] sm:gap-y-[30px] p-[24px]">
         <div className="flex w-full sm:gap-x-[20px] sm:gap-y-[30px]  flex-wrap items-center">
           <div className="flex max-w-[344px] sm:w-auto items-center gap-[12px] cursor-pointer">
             <div className="flex items-center justify-center w-8 h-8">
@@ -44,12 +44,12 @@ const Filter = () => {
               options={locationOptions}
               selectedValue={selectedLocation}
               onSelect={(value) => setSelectedLocation(value)}
-              placeholder="Chọn vị trí"
+              placeholder="Where is next ?"
               label="Tỉnh / Thành phố"
             />
           </div>
           <hr className="w-full h-px bg-[#171717] border-0 sm:w-px sm:h-10" />
-          <div className="flex items-center gap-2 min-w-[200px]">
+          <div className="flex items-center gap-[4px]">
             <div className="flex items-center justify-center w-8 h-8">
               <Image
                 src="/logo/branch-logo-black.svg"
@@ -63,33 +63,24 @@ const Filter = () => {
               selectedValue={selectedBrand}
               onSelect={(value) => setSelectedBrand(value)}
               hideIcon={true}
-              placeholder="Chọn thương hiệu"
+              placeholder="Choose brand"
               label="Thương hiệu"
+              className='text-[14px]'
             />
           </div>
           <hr className="w-full h-px bg-[#171717] border-0 sm:w-px sm:h-10" />
-          <div className="flex items-center gap-2 min-w-[400px]">
-            <div className="flex items-center gap-2">
-              <div className="flex items-center justify-center w-8 h-8">
-                <Image
-                  src="/calendar-249.png"
-                  alt="Calendar icon"
-                  width={24}
-                  height={24}
-                />
-              </div>
-              <CustomCalendar
-                startDate={checkInDate}
-                endDate={checkOutDate}
-                onChange={(start, end) => {
-                  setCheckInDate(start);
-                  setCheckOutDate(end);
-                }}
-                startLabel={t("checkInDate")}
-                endLabel={t("checkOutDate")}
-                singleCalendar={false} // Sử dụng hai calendar song song với khả năng kéo chọn khoảng thời gian
-              />
-            </div>
+          <div className="flex justify-between items-center">
+            <CustomCalendar
+              startDate={checkInDate}
+              endDate={checkOutDate}
+              onChange={(start, end) => {
+                setCheckInDate(start);
+                setCheckOutDate(end);
+              }}
+              startLabel={t("checkInDate")}
+              endLabel={t("checkOutDate")}
+              singleCalendar={false} // Sử dụng hai calendar song song với khả năng kéo chọn khoảng thời gian
+            />
           </div>
           <hr className="w-full h-px bg-[#171717] border-0 sm:w-px sm:h-10" />
           <div className="flex items-center min-w-[200px]">

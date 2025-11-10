@@ -15,7 +15,8 @@ interface DropdownProps {
   onSelect: (value: string) => void;
   hideIcon?: boolean;
   placeholder?: string;
-  label?: string
+  label?: string,
+  className?: string
 }
 
 const Dropdown = ({ options, selectedValue = "", onSelect, hideIcon = false, placeholder, label }: DropdownProps) => {
