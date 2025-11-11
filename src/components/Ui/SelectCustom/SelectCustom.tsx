@@ -14,6 +14,7 @@ interface SelectComponentProps {
   value?: string | number;
   disabled?: boolean;
   className?: string;
+  isLanguage?: boolean;
 }
 
 const SelectComponent: React.FC<SelectComponentProps> = ({
@@ -24,6 +25,7 @@ const SelectComponent: React.FC<SelectComponentProps> = ({
   defaultValue,
   disabled = false,
   className = "",
+  isLanguage,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<SelectOption | null>(
@@ -99,7 +101,7 @@ const SelectComponent: React.FC<SelectComponentProps> = ({
                     }`}
         onClick={() => !disabled && setIsOpen(!isOpen)}
       >
-        Sort by
+        <span className={`${isLanguage ? "hidden" : "block"}`}>Sort by</span>
         <div className="flex items-center gap-1">
           <div className="truncate text-lg font-medium text-[#759d3f]">
             {selectedOption ? selectedOption.label : placeholder}
