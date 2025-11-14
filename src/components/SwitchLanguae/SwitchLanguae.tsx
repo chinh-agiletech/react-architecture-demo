@@ -25,7 +25,7 @@ const SwitchLanguage = () => {
         {/* Toggle Circle with Flag */}
         <span
           className={`absolute flex h-7 w-7 transform items-center justify-center rounded-full bg-white shadow-md transition-all duration-300 ease-in-out ${
-            enabled ? "translate-x-13" : "translate-x-[0px]"
+            enabled ? "translate-x-[70px]" : "translate-x-[0px]"
           }`}
         >
           <div className="text-2xl">{enabled ? "🇬🇧" : "🇻🇳"}</div>
