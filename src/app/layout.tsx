@@ -26,6 +26,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "X Hotel",
   description: "X Hotel - Your Comfort Zone",
+  openGraph: {
+    images: [
+      {
+        url: "/logo/branch-logo-black.svg",
+        width: 1200,
+        height: 630,
+        alt: "X Hotel Image",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
