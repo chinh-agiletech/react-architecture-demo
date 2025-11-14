@@ -11,6 +11,7 @@ import {
   HourPricingType,
   OrderBy,
 } from "../../../services/roomService";
+import Filter from "@/components/Filter/Filter";
 
 const RoomList = () => {
   // Initialize i18n
@@ -281,74 +282,7 @@ const RoomList = () => {
         </div>
         {/* Price Range Filter */}
         <div className="">
-          <h3 className="text-lg font-medium mb-4 text-[#405f2d]">
-            {t("filterByPrice")}
-          </h3>
-          <div className="space-y-4">
-            <div>
-              {/* Slider for visual representation */}
-              <input
-                type="range"
-                className="w-full accent-[#759d3f] mb-4"
-                min="0"
-                max="2000000"
-                step="50000"
-                value={priceTo}
-                onChange={(e) => setPriceTo(Number(e.target.value))}
-              />
-
-              {/* From and To inputs */}
-              <div className="flex justify-between gap-4">
-                <div className="flex-1">
-                  <label className="block text-sm mb-2 text-gray-700">Từ</label>
-                  <div className="relative">
-                    <input
-                      type="number"
-                      className="w-full p-2 border rounded pr-8"
-                      placeholder="Giá"
-                      min="0"
-                      max={priceTo}
-                      value={priceFrom}
-                      onChange={(e) => {
-                        const value = Number(e.target.value);
-                        if (value <= priceTo) {
-                          setPriceFrom(value);
-                        }
-                      }}
-                    />
-                    <span className="absolute right-2 top-1/2 transform -translate-y-1/2 font-bold">
-                      đ
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex-1">
-                  <label className="block text-sm mb-2 text-gray-700">
-                    Đến
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="number"
-                      className="w-full p-2 border rounded pr-8"
-                      placeholder="Giá"
-                      min={priceFrom}
-                      max="2000000"
-                      value={priceTo}
-                      onChange={(e) => {
-                        const value = Number(e.target.value);
-                        if (value >= priceFrom) {
-                          setPriceTo(value);
-                        }
-                      }}
-                    />
-                    <span className="absolute right-2 top-1/2 transform -translate-y-1/2 font-bold">
-                      đ
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Filter />
         </div>
 
         {/* Fixed Price Filter */}
