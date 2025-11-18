@@ -103,19 +103,27 @@ export default function HotelCalendar() {
           key={day}
           onClick={() => !isPast && handleDateClick(day, monthOffset)}
           disabled={isPast}
-          className={`h-10 w-10 rounded-full flex items-center justify-center text-sm relative
-            ${
-              isPast
-                ? "text-gray-300 cursor-not-allowed"
-                : "hover:bg-gray-100 cursor-pointer"
-            }
-            ${
-              isCheckInDay || isCheckOutDay
-                ? "bg-[#405f2d] text-white font-semibold"
-                : ""
-            }
-            ${isInRangeDay ? "bg-[#e8f0e3]" : ""}
-          `}
+          className={`
+    h-10 w-[50px] flex items-center justify-center text-sm relative
+
+    ${isPast ? "text-gray-300 cursor-not-allowed" : ""}
+
+    ${
+      isCheckInDay || isCheckOutDay
+        ? "bg-[#405f2d] text-white font-semibold cursor-default"
+        : !isPast
+        ? "hover:bg-gray-100 cursor-pointer"
+        : ""
+    }
+
+    ${isCheckInDay ? "rounded-l-full" : ""}
+    ${isCheckOutDay ? "rounded-r-full" : ""}
+    ${
+      isInRangeDay && !isCheckInDay && !isCheckOutDay
+        ? "bg-[#e8f0e3] rounded-none"
+        : ""
+    }
+  `}
         >
           {day}
         </button>
