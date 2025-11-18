@@ -148,7 +148,7 @@ const RoomList = () => {
               {t("suitableChoices")}
             </h2>
           </div>
-          <div className="max-w-[155px]">
+          <div className="">
             <SelectComponent
               options={[
                 { value: "default", label: t("sortDefault") },
@@ -157,7 +157,7 @@ const RoomList = () => {
               ]}
               defaultValue="default"
               onChange={(value) => handleSortChange(value as string)}
-              className="border border-none py-[8px] px-[16px]"
+              className="border border-none !max-w-[159px]"
             />
           </div>
         </div>
@@ -258,7 +258,7 @@ const RoomList = () => {
 
           {/* Google Maps Iframe */}
           <div className="w-full min-h-[144px] border border-gray-400 rounded mb-4 overflow-hidden">
-            <img src="" alt="" />
+            <img src="./Flag_vietnam.png" alt="" />
           </div>
         </div>
         {/* Price Range Filter */}
