@@ -1,15 +1,22 @@
 "use client";
 import React, { useState } from "react";
 import { Switch } from "@headlessui/react";
+import { useTranslation } from "react-i18next";
 
 const SwitchLanguage = () => {
+  const { i18n } = useTranslation("common");
   const [enabled, setEnabled] = useState(false);
+
+  const toggleLanguage = (value: boolean) => {
+    setEnabled(value);
+    i18n.changeLanguage(value ? "en" : "vi");
+  };
 
   return (
     <div className="flex items-center gap-3 p-1">
       <Switch
         checked={enabled}
-        onChange={setEnabled}
+        onChange={toggleLanguage}
         className="relative inline-flex h-7 w-24 items-center rounded-full transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none"
       >
         {/* Background Gradient */}

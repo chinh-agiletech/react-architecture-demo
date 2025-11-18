@@ -99,7 +99,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
         <div className="mt-4">
           <Link href={detailUrl}>
             <button
-              className="hover:opacity-90 text-white px-6 py-2 rounded-full text-sm transition-colors min-w-[100px]"
+              className="hover:opacity-90 text-white px-6 py-2 rounded-full text-sm transition-colors min-w-[120px]"
               style={{ backgroundColor: buttonBgColor }}
             >
               {t("viewRoom")}
