@@ -257,32 +257,79 @@ const RoomList = () => {
           </h3>
 
           {/* Google Maps Iframe */}
-          <div className="w-full h-[150px] border border-gray-400 rounded mb-4 overflow-hidden">
-            <iframe
-              src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1600087.0824830188!2d106.40344987989903!3d16.69734200064431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1658278074260!5m2!1sen!2s${
-                selectedLocation !== "all"
-                  ? `&center=${
-                      locationOptions.find(
-                        (loc) => loc.value === selectedLocation
-                      )?.coords?.lat
-                    },${
-                      locationOptions.find(
-                        (loc) => loc.value === selectedLocation
-                      )?.coords?.lng
-                    }&zoom=12`
-                  : ""
-              }`}
-              width="100%"
-              height="100%"
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+          <div className="w-full min-h-[144px] border border-gray-400 rounded mb-4 overflow-hidden">
+            <img src="" alt="" />
           </div>
         </div>
         {/* Price Range Filter */}
         <div className="">
-          <Filter />
+          <h3 className="text-lg font-medium mb-4 text-[#405f2d]">
+            {t("filterByPrice")}
+          </h3>
+          <div className="space-y-4">
+            <div>
+              <input
+                type="range"
+                className="w-full accent-[#759d3f] mb-4"
+                min="0"
+                max="2000000"
+                step="50000"
+                value={priceTo}
+                onChange={(e) => setPriceTo(Number(e.target.value))}
+              />
+
+              {/* From and To inputs */}
+              <div className="flex justify-between gap-4">
+                <div className="flex-1">
+                  <label className="block text-sm mb-2 text-gray-700">Từ</label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      className="w-full p-2 border rounded pr-8"
+                      placeholder="Giá"
+                      min="0"
+                      max={priceTo}
+                      value={priceFrom}
+                      onChange={(e) => {
+                        const value = Number(e.target.value);
+                        if (value <= priceTo) {
+                          setPriceFrom(value);
+                        }
+                      }}
+                    />
+                    <span className="absolute right-2 top-1/2 transform -translate-y-1/2 font-bold">
+                      đ
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex-1">
+                  <label className="block text-sm mb-2 text-gray-700">
+                    Đến
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      className="w-full p-2 border rounded pr-8"
+                      placeholder="Giá"
+                      min={priceFrom}
+                      max="2000000"
+                      value={priceTo}
+                      onChange={(e) => {
+                        const value = Number(e.target.value);
+                        if (value >= priceFrom) {
+                          setPriceTo(value);
+                        }
+                      }}
+                    />
+                    <span className="absolute right-2 top-1/2 transform -translate-y-1/2 font-bold">
+                      đ
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Fixed Price Filter */}

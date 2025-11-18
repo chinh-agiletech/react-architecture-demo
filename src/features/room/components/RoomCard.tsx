@@ -29,7 +29,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
   const buttonBgColor = isXcellBrand ? "#9f4fa8" : "#759d3f";
 
   return (
-    <div className="room-card border border-none rounded-[12px] overflow-hidden shadow-md flex flex-col md:grid md:grid-cols-[320px_320px_160px]">
+    <div className="room-card border border-none rounded-[12px] overflow-hidden shadow-md flex flex-col md:grid md:grid-cols-[375px_375px_160px]">
       {/* Room Image */}
       <div className="w-full min-h-[258px] relative ">
         <Image src={image} alt={`${name} Room`} fill className="object-cover" />
