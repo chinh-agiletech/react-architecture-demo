@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import SelectComponent from "../Ui/SelectCustom/SelectCustom";
 import Flag from "../Flag/Flag";
+import SwitchLanguage from "../SwitchLanguae/SwitchLanguae";
 
 function Header() {
   const { t, i18n } = useTranslation("common");
@@ -33,23 +34,12 @@ function Header() {
   };
 
   return (
-    <header className="w-full bg-white shadow-lg fixed top-0 left-0 right-0 z-50">
+    <header className="w-full min-h-[134px] bg-white shadow-lg fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top row - Language selector and Account link - Hidden on mobile */}
         <div className="hidden md:flex justify-end items-center py-2">
           <div className="flex items-center space-x-4">
-            <div className="w-[150px] flex items-center space-x-2">
-              <Flag country={currentLanguage === "vi" ? "vi" : "en"} />
-              <SelectComponent
-                options={[
-                  { value: "vi", label: t("vietnamese") },
-                  { value: "en", label: t("english") },
-                ]}
-                defaultValue={currentLanguage}
-                onChange={handleLanguageChange}
-                className="w-32"
-              />
-            </div>
+            <SwitchLanguage />
             <Link
               href="/account"
               className="text-[#405f2d] hover:text-[#5a8941] transition-colors text-sm font-medium"
@@ -241,6 +231,7 @@ function Header() {
                     defaultValue={currentLanguage}
                     onChange={handleLanguageChange}
                     className="w-[200px] text-md"
+                    isLanguage={true}
                   />
                 </div>
               </div>

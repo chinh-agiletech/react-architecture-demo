@@ -11,6 +11,7 @@ import {
   HourPricingType,
   OrderBy,
 } from "../../../services/roomService";
+import Filter from "@/components/Filter/Filter";
 
 const RoomList = () => {
   // Initialize i18n
@@ -147,7 +148,7 @@ const RoomList = () => {
               {t("suitableChoices")}
             </h2>
           </div>
-          <div className="flex items-center gap-2 w-[200px]">
+          <div className="max-w-[155px]">
             <SelectComponent
               options={[
                 { value: "default", label: t("sortDefault") },
@@ -156,7 +157,7 @@ const RoomList = () => {
               ]}
               defaultValue="default"
               onChange={(value) => handleSortChange(value as string)}
-              className="border border-none"
+              className="border border-none py-[8px] px-[16px]"
             />
           </div>
         </div>
@@ -256,27 +257,8 @@ const RoomList = () => {
           </h3>
 
           {/* Google Maps Iframe */}
-          <div className="w-full h-[150px] border border-gray-400 rounded mb-4 overflow-hidden">
-            <iframe
-              src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1600087.0824830188!2d106.40344987989903!3d16.69734200064431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1658278074260!5m2!1sen!2s${
-                selectedLocation !== "all"
-                  ? `&center=${
-                      locationOptions.find(
-                        (loc) => loc.value === selectedLocation
-                      )?.coords?.lat
-                    },${
-                      locationOptions.find(
-                        (loc) => loc.value === selectedLocation
-                      )?.coords?.lng
-                    }&zoom=12`
-                  : ""
-              }`}
-              width="100%"
-              height="100%"
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+          <div className="w-full min-h-[144px] border border-gray-400 rounded mb-4 overflow-hidden">
+            <img src="" alt="" />
           </div>
         </div>
         {/* Price Range Filter */}
@@ -286,7 +268,6 @@ const RoomList = () => {
           </h3>
           <div className="space-y-4">
             <div>
-              {/* Slider for visual representation */}
               <input
                 type="range"
                 className="w-full accent-[#759d3f] mb-4"
